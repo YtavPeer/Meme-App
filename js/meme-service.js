@@ -1,8 +1,9 @@
 'use strict';
 
 /* Globals */
-var gKeywords = { 'happy': 19, 'funny puk': 40, 'animal': 24, 'famous': 30 };
-
+var gElCanvas;
+var gCtx;
+var gKeywords = { 'happy': 19, 'crazy': 40, 'sarcastic': 24, 'famous': 30, 'sad': 19, 'animal': 40 };
 var gImgs = [
       { id: 1, imgUrl: './img-square/1.jpg', Keywords: ['happy', 'funny'] },
       { id: 2, imgUrl: './img-square/2.jpg', Keywords: ['happy', 'funny'] },
@@ -23,15 +24,12 @@ var gImgs = [
       { id: 17, imgUrl: './img-square/17.jpg', Keywords: ['happy', 'funny'] },
       { id: 18, imgUrl: './img-square/18.jpg', Keywords: ['happy', 'funny'] },
 ];
-
 var gMeme = {
       selectedImgId: 2,
       selectedLineIdx: 0,
-      isLineSelected: false,
-      lines: [
-
-      ],
-      currFontSize: 20,
+      isLinesMark: false,
+      lines: [],
+      currFontSize: 40,
       lineHeigt: 40,
 }
 
@@ -53,28 +51,28 @@ function getCurrImg(imgId) {
       })
 }
 
-function addTextLine(newText, size = gMeme.currFontSize, align = 'left') {
-      var newLine = {
-            txt: newText,
-            size: size,
-            align: 'left',
-            color: 'red',
-            posX: findEmptyPosX(gMeme.lines.length),
-            posY: findEmptyPosY(gMeme.lines.length),
-      }
-      gMeme.lines.push(newLine);
-}
-
-function updateGmeme(imgId) {
+function updateGmemeImage(imgId) {
       gMeme = {
             selectedImgId: imgId,
             selectedLineIdx: 0,
             isLineSelected: false,
-            lines: [
-            ],
-            currFontSize: 20,
+            lines: [],
+            currFontSize: 40,
             lineHeigt: 40,
       }
+}
+
+function addTextLine(newText, size = gMeme.currFontSize, align = 'left', FillColor = 'white', stroke = 'black') {
+      var newLine = {
+            txt: newText,
+            size: size,
+            align: align,
+            color: FillColor,
+            stroke: stroke,
+            posX: 30,
+            posY: findEmptyPosY(gMeme.lines.length),
+      }
+      gMeme.lines.push(newLine);
 }
 
 function changeTextSize(value) {
@@ -82,24 +80,16 @@ function changeTextSize(value) {
       gMeme.currFontSize += value;
 }
 
-function findEmptyPosX(lineNumber) {
-      return 15;
-
-}
-
 function findEmptyPosY(lineNumber) {
       switch (lineNumber) {
             case 0:
-                  return 30
+                  return 50
                   break;
             case 1:
-                  var y = (gElCanvas.height - gMeme.lineHeigt - 30);
-                  return y;
-                  break;
-            case 2:
-                  return gElCanvas.height / 2
+                  return (gElCanvas.height - 20);
                   break;
             default:
+                  return gElCanvas.height / 2
                   break;
       }
 }

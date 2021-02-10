@@ -5,21 +5,22 @@
       <meta charset="UTF-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="icon" type="image/png" href="./ICONS/icon.jpg">
       <link rel="stylesheet" href="./css/main.css">
-      <title>Meme</title>
+      <title>Memegen</title>
 </head>
 
 <body onload="init()">
       <header class="main-header">
-            <div class="header-container main-container flex align-item-center spcae-between">
-                  <div class="logo">memegen</div>
+            <nav class="header-container main-container flex align-item-center spcae-between">
+                  <div class="logo"><img class="img-logo" src="./ICONS/LOGO.png" alt=""></div>
                   <ul class="navbar-conntainer clean-ul flex">
                         <li><a class="nav-item" onclick="openGallery()">Gallery</a></li>
                         <li><a class="nav-item" onclick="openMemes()">Memes</a></li>
                         <li><a class="nav-item">About</a></li>
                   </ul>
                   <button class="menu-btn" hidden>☰</button>
-            </div>
+            </nav>
       </header>
 
       <section class="main-search main-container flex align-item-center spcae-between">
@@ -31,8 +32,7 @@
       <section class="gallery main-container">
       </section>
 
-
-      <main class="main-content main-container flex" style="display: none" ;>
+      <main class="main-editor main-container flex" style="display: none" ;>
             <section class="canvas">
                   <canvas id="my-canvas" height="500" width="500""></canvas>
             </section>
@@ -86,13 +86,16 @@
             </section>
       </main>
 
+      <section class="main-memes" style="display: none">
+            <h1>this is memes pages</h1>
+      </section>
+
       <footer class="main-footer">
             <div class="footer-container flex">
-                  <div class="logo logo-footer">memegen</div>
+                  <div class="logo logo-footer"><img class="img-logo" src="./ICONS/LOGO.png" alt=""></div>
                   <small class="copy-footer">All Rights Reserved 2019</small>
             </div>
       </footer>
-
 
       <script src="./js/meme-service.js"></script>
       <script src="./js/main.js"></script>

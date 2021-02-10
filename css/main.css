@@ -21,6 +21,11 @@
       src: url('.././fonts/Montserrat-Thin.ttf');
 }
 
+@font-face {
+      font-family: impact;
+      src: url('.././fonts/impact.ttf');
+}
+
 
 /*Basics */
 
@@ -111,8 +116,11 @@ button {
 }
 
 .logo {
-      font-size: 2rem;
       font-family: montserrat-medium;
+}
+
+.img-logo {
+      max-width: 150px;
 }
 
 .navbar-conntainer>* {
@@ -179,7 +187,7 @@ button {
 
 /* main content */
 
-.main-content {
+.main-editor {
       display: flex;
       margin-block-start: 20px;
       justify-content: space-between;
