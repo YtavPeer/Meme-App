@@ -1,7 +1,7 @@
 'use strict';
 
 /* Globals */
-var gKeywords = { 'happy': 12, 'funny puk': 1 };
+var gKeywords = { 'happy': 19, 'funny puk': 40, 'animal': 24, 'famous': 30 };
 
 var gImgs = [
       { id: 1, imgUrl: './img-square/1.jpg', Keywords: ['happy', 'funny'] },
@@ -43,6 +43,10 @@ function getImgs() {
 
 function getGmeme() {
       return gMeme;
+}
+
+function getSearchWord() {
+      return gKeywords;
 }
 
 

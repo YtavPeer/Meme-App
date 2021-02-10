@@ -5,16 +5,27 @@ var gElCanvas;
 var gCtx;
 
 function init() {
+      renderSearchWord()
       renderGallery()
       gElCanvas = document.getElementById('my-canvas');
       gCtx = gElCanvas.getContext('2d');
       renderMeme()
 }
 
+function renderSearchWord() {
+      var searchWord = getSearchWord();
+      var strWordsHtml = '';
+      for (var key in searchWord) {
+            strWordsHtml += `<li><a href="" style="font-size:${searchWord[key]}px;" class="search-item">${key}</a></li>`;
+      }
+      var elSearchWords = document.querySelector('.search-word');
+      elSearchWords.innerHTML = strWordsHtml;
+}
+
 function renderGallery() {
       var imgs = getImgs();
       var strImgsHtml = imgs.map(img => {
-            return `<img class='img-item' src="./img-square/${img.id}.jpg" onclick='onImageClick(${img.id})' alt="">`
+            return `<img  class='img-item' src="./img-square/${img.id}.jpg" onclick='onImageClick(${img.id})' alt="">`
       });
       var elGallery = document.querySelector('.gallery');
       elGallery.innerHTML = strImgsHtml.join('');

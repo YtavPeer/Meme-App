@@ -122,8 +122,7 @@ a {
 
 /* main search */
 .main-search {
-      margin-block-start: 16px;
-      margin-block-end: 16px;
+      height: 102px;
 }
 
 .serach-bar {
@@ -144,6 +143,19 @@ a {
       border-color: green
 }
 
+.search-word {
+      width: 100%;
+      justify-content: flex-end;
+      align-items: center;
+}
+
+.search-item {
+      color: #040a2c;
+      font-family: montserrat-regular;
+      font-size: 2.5em;
+      text-align: center;
+      margin-inline-end: 20px;
+}
 
 /*Gallery */
 .gallery {
@@ -169,6 +181,7 @@ a {
 
 .footer-container {
       justify-content: center;
+      align-items: center;
       flex-direction: column;
       margin-block-start: 13px;
 }
