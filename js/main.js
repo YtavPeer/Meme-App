@@ -63,5 +63,24 @@ function onAddTextLine() {
 function onImageClick(imgId) {
       updateGmeme(imgId);
       renderMeme()
+      openMemes()
+}
+
+function openMemes() {
+      var elGallery = document.querySelector('.gallery');
+      elGallery.style.display = 'none';
+      var elGallery = document.querySelector('.main-content');
+      elGallery.style.display = 'flex';
+      var elSearch = document.querySelector('.main-search');
+      elSearch.style.display = 'none';
+}
+
+function openGallery() {
+      var elGallery = document.querySelector('.gallery');
+      elGallery.style.display = 'grid';
+      var elGallery = document.querySelector('.main-content');
+      elGallery.style.display = 'none';
+      var elSearch = document.querySelector('.main-search');
+      elSearch.style.display = 'flex';
 }
 

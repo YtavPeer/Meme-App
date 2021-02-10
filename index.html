@@ -14,9 +14,9 @@
             <div class="header-container main-container flex align-item-center spcae-between">
                   <div class="logo">memegen</div>
                   <ul class="navbar-conntainer clean-ul flex">
-                        <li><a href="" class="nav-item">Gallery</a></li>
-                        <li><a href="" class="nav-item">Memes</a></li>
-                        <li><a href="" class="nav-item">About</a></li>
+                        <li><a class="nav-item" onclick="openGallery()">Gallery</a></li>
+                        <li><a class="nav-item" onclick="openMemes()">Memes</a></li>
+                        <li><a class="nav-item">About</a></li>
                   </ul>
                   <button class="menu-btn" hidden>☰</button>
             </div>
@@ -32,15 +32,55 @@
       </section>
 
 
-
-
-      <main class="main-content main-container main-container flex">
+      <main class="main-content main-container flex" style="display: none" ;>
             <section class="canvas">
                   <canvas id="my-canvas" height="500" width="500""></canvas>
             </section>
             <section class=" control-bar">
-                        <input type="text" class="text-line">
-                        <button onclick="onAddTextLine()">+</button>
+                        <div class="add-text-line"><input type="text" class="text-line"
+                                    placeholder="Add your line here" /></div>
+                        <div class="box arrow-up-down">
+                              <img class="icon" src="./ICONS/up-and-down-opposite-double-arrows-side-by-side.png"
+                                    alt="">
+                        </div>
+                        <div class="box add-line">
+                              <img class="icon" onclick="onAddTextLine()" src="./ICONS/add.png" alt="">
+                        </div>
+                        <div class="box delete-line">
+                              <img class="icon" src="./ICONS/trash.png" alt="">
+                        </div>
+
+                        <div class="box font-plus">
+                              <img class="icon" src="./ICONS/increase font - icon.png" alt="">
+                        </div>
+                        <div class="box font-minus">
+                              <img class="icon" src="./ICONS/decrease font - icon.png" alt="">
+                        </div>
+                        <div class="box align-left">
+                              <img class="icon" src="./ICONS/align-to-left.png" alt="">
+                        </div>
+                        <div class="box align-center">
+                              <img class="icon" src="./ICONS/center-text-alignment.png" alt="">
+                        </div>
+                        <div class="box align-right">
+                              <img class="icon" src="./ICONS/align-to-right.png" alt="">
+                        </div>
+                        <div class="box choose-font">
+                              <select class="font-select">
+                                    <option>impact</option>
+                                    <option>ariel</option>
+                                    <option>david</option>
+                              </select>
+                        </div>
+                        <div class="box choose-fill-color">
+                              <img class="icon" src="./ICONS/text stroke.png" alt="">
+                        </div>
+                        <div class="box choose-stroke-color">
+                              <img class="icon" src="./ICONS/paint-board-and-brush.png" alt="">
+                        </div>
+                        <div class="box add-stuff"></div>
+                        <button class="share-btn">share</button>
+                        <button class="download-btn">download</button>
             </section>
       </main>
 
