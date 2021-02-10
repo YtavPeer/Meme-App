@@ -5,12 +5,20 @@ var gElCanvas;
 var gCtx;
 
 function init() {
-
+      renderGallery()
       gElCanvas = document.getElementById('my-canvas');
       gCtx = gElCanvas.getContext('2d');
       renderMeme()
 }
 
+function renderGallery() {
+      var imgs = getImgs();
+      var strImgsHtml = imgs.map(img => {
+            return `<img class='img-item' src="./img-square/${img.id}.jpg" onclick='onImageClick(${img.id})' alt="">`
+      });
+      var elGallery = document.querySelector('.gallery');
+      elGallery.innerHTML = strImgsHtml.join('');
+}
 
 function renderMeme() {
       const currMeme = getGmeme();
@@ -40,3 +48,9 @@ function onAddTextLine() {
       addTextLine(newText);
       renderMeme()
 }
+
+function onImageClick(imgId) {
+      updateGmeme(imgId);
+      renderMeme()
+}
+
