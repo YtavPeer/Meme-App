@@ -1,6 +1,5 @@
 'use strict';
 
-
 var gElCanvas;
 var gCtx;
 
@@ -39,7 +38,7 @@ function renderMeme() {
       img.onload = () => {
             gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
             currMeme.lines.forEach(line => {
-                  drawText(200, 70, line.txt, line.size, line.align, line.color)
+                  drawText(line.posX, line.posY, line.txt, line.size, line.align, line.color)
             });
       }
 }
@@ -58,6 +57,10 @@ function onAddTextLine() {
       var newText = document.querySelector('.text-line').value;
       addTextLine(newText);
       renderMeme()
+}
+
+function onChangeTextSize(value) {
+      changeTextSize(value)
 }
 
 function onImageClick(imgId) {
@@ -84,3 +87,10 @@ function openGallery() {
       elSearch.style.display = 'flex';
 }
 
+function onSwitchLines() {
+      gMeme.isLineSelected = true;
+      var gMems = getGmeme();
+      gMeme.lines[gMeme.selectedLineIdx]
+
+      gMeme.selectedLineIdx++;
+}

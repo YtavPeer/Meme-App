@@ -40,8 +40,8 @@
                         <div class="add-text-line"><input type="text" class="text-line"
                                     placeholder="Add your line here" /></div>
                         <div class="box arrow-up-down">
-                              <img class="icon" src="./ICONS/up-and-down-opposite-double-arrows-side-by-side.png"
-                                    alt="">
+                              <img onclick="onSwitchLines()" class="icon"
+                                    src="./ICONS/up-and-down-opposite-double-arrows-side-by-side.png" alt="">
                         </div>
                         <div class="box add-line">
                               <img class="icon" onclick="onAddTextLine()" src="./ICONS/add.png" alt="">
@@ -51,10 +51,12 @@
                         </div>
 
                         <div class="box font-plus">
-                              <img class="icon" src="./ICONS/increase font - icon.png" alt="">
+                              <img class="icon" onclick="onChangeTextSize(1)" src="./ICONS/increase font - icon.png"
+                                    alt="">
                         </div>
                         <div class="box font-minus">
-                              <img class="icon" src="./ICONS/decrease font - icon.png" alt="">
+                              <img class="icon" onclick="onChangeTextSize(-1)" src="./ICONS/decrease font - icon.png"
+                                    alt="">
                         </div>
                         <div class="box align-left">
                               <img class="icon" src="./ICONS/align-to-left.png" alt="">

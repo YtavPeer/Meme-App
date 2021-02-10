@@ -27,14 +27,12 @@ var gImgs = [
 var gMeme = {
       selectedImgId: 2,
       selectedLineIdx: 0,
+      isLineSelected: false,
       lines: [
-            {
-                  txt: 'I never eat Falafel',
-                  size: 20,
-                  align: 'left',
-                  color: 'blue'
-            }
-      ]
+
+      ],
+      currFontSize: 20,
+      lineHeigt: 40,
 }
 
 function getImgs() {
@@ -49,20 +47,20 @@ function getSearchWord() {
       return gKeywords;
 }
 
-
 function getCurrImg(imgId) {
       return gImgs.find(img => {
             return img.id === imgId;
       })
 }
 
-
-function addTextLine(newText) {
+function addTextLine(newText, size = gMeme.currFontSize, align = 'left') {
       var newLine = {
             txt: newText,
-            size: 20,
+            size: size,
             align: 'left',
-            color: 'red'
+            color: 'red',
+            posX: findEmptyPosX(gMeme.lines.length),
+            posY: findEmptyPosY(gMeme.lines.length),
       }
       gMeme.lines.push(newLine);
 }
@@ -71,13 +69,38 @@ function updateGmeme(imgId) {
       gMeme = {
             selectedImgId: imgId,
             selectedLineIdx: 0,
+            isLineSelected: false,
             lines: [
-                  {
-                        txt: 'I never eat Falafel',
-                        size: 20,
-                        align: 'left',
-                        color: 'blue'
-                  }
-            ]
+            ],
+            currFontSize: 20,
+            lineHeigt: 40,
       }
 }
+
+function changeTextSize(value) {
+      if ((gMeme.currFontSize < 2 && value < 0) || (gMeme.currFontSize >= 60 && value > 0)) return;
+      gMeme.currFontSize += value;
+}
+
+function findEmptyPosX(lineNumber) {
+      return 15;
+
+}
+
+function findEmptyPosY(lineNumber) {
+      switch (lineNumber) {
+            case 0:
+                  return 30
+                  break;
+            case 1:
+                  var y = (gElCanvas.height - gMeme.lineHeigt - 30);
+                  return y;
+                  break;
+            case 2:
+                  return gElCanvas.height / 2
+                  break;
+            default:
+                  break;
+      }
+}
+
