@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="./css/main.css">
+      <title>Meme</title>
+</head>
+
+<body onload="init()">
+      <header class="main-header">
+            <div class="header-container main-container flex align-item-center spcae-between">
+                  <div class="logo">Logo</div>
+                  <ul class="navbar-conntainer clean-ul flex">
+                        <li><a href="" class="nav-item">Gallery</a></li>
+                        <li><a href="" class="nav-item">Memes</a></li>
+                        <li><a href="" class="nav-item">About</a></li>
+                  </ul>
+                  <button class="menu-btn" hidden>☰</button>
+            </div>
+      </header>
+
+      <section class="main-search main-container">
+            <div class="search-container">
+                  <input type="text">
+                  <ul class="search-word clean-ul flex">
+                        <li><a href="" class="search-item">Funny</a></li>
+                        <li><a href="" class="search-item">Animal</a></li>
+                        <li><a href="" class="search-item">Woman</a></li>
+                  </ul>
+            </div>
+      </section>
+
+      <section class="gallery">
+
+
+      </section>
+
+
+
+
+      <main class="main-content main-container" hidden>
+            <section class="canvas">
+                  <canvas id="my-canvas" height="500" width="500""></canvas>
+            </section>
+
+            <section class=" menu-bar">
+            </section>
+
+      </main>
+
+
+      <script src="./js/meme-service.js"></script>
+      <script src="./js/main.js"></script>
+</body>
+
+</html>

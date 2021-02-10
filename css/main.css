@@ -1,0 +1,59 @@
+/*Basics */
+
+* {
+      box-sizing: border-box;
+}
+
+html {
+      font-size: 16px;
+}
+
+body {
+      margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+      margin: 0;
+}
+
+p {
+      margin: 0;
+}
+
+img {
+      width: 100%;
+}
+
+a {
+      text-decoration: none;
+}
+
+/* Helpers */
+
+.clean-ul {
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+}
+
+/* FLEX HELPERS */
+
+.flex {
+      display: flex;
+}
+
+.flex.align-item-center {
+      align-items: center;
+}
+
+.flex.spcae-between {
+      justify-content: space-between;
+}
+
+
+/* COMPONENTS */
