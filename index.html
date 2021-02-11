@@ -10,6 +10,8 @@
       <title>Memegen</title>
 </head>
 
+<div class="main-screen" onclick="toggleMenu()"></div>
+
 <body onload="init()">
       <header class="main-header">
             <nav class="header-container main-container flex align-item-center spcae-between">
@@ -19,7 +21,7 @@
                         <li><a class="nav-item" onclick="openMemes()">Memes</a></li>
                         <li><a class="nav-item">About</a></li>
                   </ul>
-                  <button class="menu-btn" hidden>☰</button>
+                  <button class="menu-btn" onclick="toggleMenu()">☰</button>
             </nav>
       </header>
 

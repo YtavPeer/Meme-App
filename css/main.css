@@ -121,15 +121,37 @@ button {
 
 .img-logo {
       max-width: 150px;
+      cursor: pointer;
+}
+
+.navbar-conntainer {
+      cursor: pointer;
+      height: 100%;
 }
 
 .navbar-conntainer>* {
+      display: flex;
+      justify-content: center;
+      align-items: center;
       width: 130px;
+      height: 100%;
       font-family: montserrat-regular;
       font-size: 1.1875em;
       font-weight: 400;
       text-align: center;
       color: #ffffff;
+}
+
+
+.navbar-conntainer>*:hover {
+      transition: background-color 0.3s;
+      box-shadow: inset 0 -6px 0 hsl(120, 2%, 8%);
+      color: hsl(120, 2%, 8%);
+}
+
+
+.menu-btn {
+      display: none;
 }
 
 
@@ -397,4 +419,105 @@ a.btn {
 .copy-footer {
       font-family: montserrat-thin;
       font-size: 1.1875em;
+}
+
+
+/* modals and screen */
+
+.main-screen {
+      visibility: hidden;
+      opacity: 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 40%);
+      transition: opacity 0.8s;
+      cursor: pointer;
+}
+
+@media only screen and (max-width: 920px) {
+      .main-editor {
+            flex-direction: column;
+            align-items: center;
+      }
+}
+
+@media only screen and (max-width: 860px) {}
+
+
+
+@media only screen and (max-width: 740px) {
+      .main-search {
+            flex-wrap: wrap;
+      }
+
+      .search-word {
+            flex-direction: row;
+      }
+
+      .search-item {
+            font-size: 10px !important;
+      }
+
+      .serach-bar {
+            margin-block-start: 20px;
+            margin-block-end: 5px;
+      }
+
+      .gallery {
+            margin-block-start: 35px;
+      }
+
+      .menu-btn {
+            display: block;
+            position: absolute;
+            right: 30px;
+            top: 90;
+      }
+
+      .gallery {
+            margin-block-start: 0;
+      }
+
+      .navbar-conntainer {
+            position: fixed;
+            right: 0;
+            top: 65px;
+            flex-direction: column;
+            background-color: #ff7f00;
+            height: 100vh;
+            width: 250px;
+            box-shadow: -2px 0px 15px 0px rgb(219, 216, 216);
+            transform: translateX(100%);
+            transition: transform 0.8s;
+      }
+
+      body.menu-open .navbar-conntainer {
+            transform: translateX(0);
+      }
+
+      body.menu-open .main-screen {
+            opacity: 1;
+            visibility: visible;
+      }
+
+      body.menu-open .card-btn {
+            z-index: -1;
+      }
+
+      .navbar-conntainer {
+            width: 70%;
+      }
+
+      .navbar-conntainer>* {
+            width: 100%;
+      }
+
+      li {
+            width: 250px;
+      }
+
+    
 }

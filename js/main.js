@@ -282,4 +282,11 @@ function renderImg(img) {
       gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height);
 }
 
-
+function toggleMenu() {
+      var menuOpen = document.body.classList.toggle('menu-open')
+      if (menuOpen) {
+            document.querySelector('.menu-btn').innerText = 'X';
+      } else {
+            document.querySelector('.menu-btn').innerText = '☰';
+      }
+}
