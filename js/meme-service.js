@@ -62,28 +62,41 @@ function updateGmemeImage(imgId) {
       }
 }
 
-function addTextLine(newText, size = gMeme.currFontSize, align = 'left', FillColor = 'white', stroke = 'black') {
+function addTextLine(newText, size = gMeme.currFontSize, align = 'center', FillColor = 'white', stroke = 'black') {
       var newLine = {
             txt: newText,
             size: size,
             align: align,
             color: FillColor,
             stroke: stroke,
-            posX: 30,
+            posX: 250,
             posY: findEmptyPosY(gMeme.lines.length),
       }
       gMeme.lines.push(newLine);
 }
 
 function changeTextSize(value) {
-      if ((gMeme.currFontSize < 2 && value < 0) || (gMeme.currFontSize >= 60 && value > 0)) return;
+      if ((gMeme.currFontSize < 20 && value < 0) || (gMeme.currFontSize >= 60 && value > 0)) return;
       gMeme.currFontSize += value;
+      gMeme.lines[gMeme.selectedLineIdx].size += value;
+}
+
+function changeAlignment(value) {
+      gMeme.lines[gMeme.selectedLineIdx].align = value;
+}
+
+function changeFillColor(color) {
+      gMeme.lines[gMeme.selectedLineIdx].color = color;
+}
+
+function changeStrokeColor(strokeColor) {
+      gMeme.lines[gMeme.selectedLineIdx].stroke = strokeColor;
 }
 
 function findEmptyPosY(lineNumber) {
       switch (lineNumber) {
             case 0:
-                  return 50
+                  return 65
                   break;
             case 1:
                   return (gElCanvas.height - 20);
@@ -94,3 +107,6 @@ function findEmptyPosY(lineNumber) {
       }
 }
 
+function deleteSelectedLine() {
+      gMeme.lines.splice(gMeme.selectedLineIdx, 1);
+}

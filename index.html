@@ -47,7 +47,7 @@
                               <img class="icon" onclick="onAddTextLine()" src="./ICONS/add.png" alt="">
                         </div>
                         <div class="box delete-line">
-                              <img class="icon" src="./ICONS/trash.png" alt="">
+                              <img onclick="onDeleteLine()" class="icon" src="./ICONS/trash.png" alt="">
                         </div>
 
                         <div class="box font-plus">
@@ -59,13 +59,16 @@
                                     alt="">
                         </div>
                         <div class="box align-left">
-                              <img class="icon" src="./ICONS/align-to-left.png" alt="">
+                              <img onclick="onChangeAlignment('right')" class="icon" src="./ICONS/align-to-left.png"
+                                    alt="">
                         </div>
                         <div class="box align-center">
-                              <img class="icon" src="./ICONS/center-text-alignment.png" alt="">
+                              <img onclick="onChangeAlignment('center')" class="icon"
+                                    src="./ICONS/center-text-alignment.png" alt="">
                         </div>
                         <div class="box align-right">
-                              <img class="icon" src="./ICONS/align-to-right.png" alt="">
+                              <img onclick="onChangeAlignment('left')" class="icon" src="./ICONS/align-to-right.png"
+                                    alt="">
                         </div>
                         <div class="box choose-font">
                               <select class="font-select">
@@ -75,10 +78,16 @@
                               </select>
                         </div>
                         <div class="box choose-fill-color">
-                              <img class="icon" src="./ICONS/text stroke.png" alt="">
+                              <img onclick="onClickFillColorPallete()" class="icon changeFillColor"
+                                    src="./ICONS/text stroke.png" alt="">
+                              <input type="color" oninput="onChangeFillColor(this)" class="color-fill-picker"
+                                    tabindex=-1 class="hidden-color-picker" style="display: none" ;>
                         </div>
                         <div class="box choose-stroke-color">
-                              <img class="icon" src="./ICONS/paint-board-and-brush.png" alt="">
+                              <img onclick="onClickStrokeColorPallete()" class="icon changeStrokeColor"
+                                    src="./ICONS/paint-board-and-brush.png" alt="">
+                              <input type="color" oninput="onChangeStrokeColor(this)" class="color-stroke-picker"
+                                    tabindex=-1 class="hidden-color-picker" style="display: none" ;>
                         </div>
                         <div class="box add-stuff"></div>
                         <button class="share-btn">share</button>

@@ -302,6 +302,15 @@ button {
       grid-row: 4 / 5;
 }
 
+.hidden-color-picker {
+      position: absolute;
+      left: -10000px;
+      top: auto;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+}
+
 .choose-stroke-color {
       grid-column: 5 /6;
       grid-row: 4 / 5;

@@ -61,7 +61,7 @@ function drawText(x, y, text, fontSize, align, color, stroke) {
 
 function drawRect(x, y) {
       gCtx.beginPath()
-      gCtx.rect(x - 15, y - 40, 460, 50)
+      gCtx.rect(x - 240, y - 60, 475, 70)
       var gradient = gCtx.createLinearGradient(0, 0, 170, 0);
       gCtx.lineWidth = 4;
       gradient.addColorStop("0", "magenta");
@@ -108,14 +108,52 @@ function onAddTextLine() {
 
 function onChangeTextSize(value) {
       changeTextSize(value)
+      renderMeme();
+}
+
+function onChangeAlignment(value) {
+      changeAlignment(value)
+      renderMeme();
+}
+
+function onClickFillColorPallete() {
+      var elColorPicker = document.querySelector('.color-fill-picker');
+      elColorPicker.style.display = 'block'
+      elColorPicker.focus();
+      elColorPicker.value = "#FFCCff";
+      elColorPicker.click();
+}
+
+function onChangeFillColor(elPicker) {
+      changeFillColor(elPicker.value);
+      renderMeme();
+}
+
+function onClickStrokeColorPallete() {
+      var elColorPicker = document.querySelector('.color-stroke-picker');
+      elColorPicker.style.display = 'block'
+      elColorPicker.focus();
+      elColorPicker.value = "#FFCCff";
+      elColorPicker.click();
+}
+
+function onChangeStrokeColor(elStrokePicker) {
+      changeStrokeColor(elStrokePicker.value);
+      renderMeme();
 }
 
 function onSwitchLines() {
       gMeme.isLinesMark = true;
-      renderMeme()
       if (gMeme.selectedLineIdx >= gMeme.lines.length - 1) {
             gMeme.selectedLineIdx = 0;
       } else {
             gMeme.selectedLineIdx++;
       }
+      renderMeme()
 }
+
+function onDeleteLine() {
+      deleteSelectedLine();
+      renderMeme()
+}
+
