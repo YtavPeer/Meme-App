@@ -3,6 +3,7 @@
 function init() {
       renderSearchWord()
       renderGallery()
+      renderMemes()
       gElCanvas = document.getElementById('my-canvas');
       gCtx = gElCanvas.getContext('2d');
       addListeners()
@@ -25,6 +26,17 @@ function renderGallery() {
       });
       var elGallery = document.querySelector('.gallery');
       elGallery.innerHTML = strImgsHtml.join('');
+}
+
+function renderMemes() {
+      updateGMemes()
+      var imgsMemes = getGsaveMemes();
+      var strImgsHtml = imgsMemes.map((img) => {
+            const imgContent = img.dataUrl;
+            return `<img  class='memes-items' src="${imgContent}" alt="">`
+      });
+      var elMemes = document.querySelector('.main-memes');
+      elMemes.innerHTML = strImgsHtml.join('');
 }
 
 function onImageClick(imgId) {
@@ -79,6 +91,8 @@ function openEditor() {
       elGallery.style.display = 'flex';
       var elSearch = document.querySelector('.main-search');
       elSearch.style.display = 'none';
+      var elMemes = document.querySelector('.main-memes');
+      elMemes.style.display = 'none';
 }
 
 function openGallery() {
@@ -88,6 +102,8 @@ function openGallery() {
       elEditor.style.display = 'none';
       var elSearch = document.querySelector('.main-search');
       elSearch.style.display = 'flex';
+      var elMemes = document.querySelector('.main-memes');
+      elMemes.style.display = 'none';
 }
 
 function openMemes() {
@@ -289,4 +305,10 @@ function toggleMenu() {
       } else {
             document.querySelector('.menu-btn').innerText = '☰';
       }
+}
+
+//handle storage
+function onSaveMeme(elSave) {
+      saveMeme(elSave);
+      renderMemes()
 }

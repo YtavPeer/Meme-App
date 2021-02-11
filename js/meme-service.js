@@ -33,6 +33,11 @@ var gMeme = {
       lineHeigt: 40,
 }
 const gTouchEvs = ['touchstart', 'touchmove', 'touchend']
+const KEY = 'MEMES';
+var gSaveMemes;
+
+
+
 
 function getImgs() {
       return gImgs
@@ -40,6 +45,10 @@ function getImgs() {
 
 function getGmeme() {
       return gMeme;
+}
+
+function getGsaveMemes() {
+      return gSaveMemes;
 }
 
 function getSearchWord() {
@@ -148,4 +157,27 @@ function updateLineDragging(lineIndex, pos) {
 
 function removeLineMark() {
       gMeme.isLinesMark = false;
+}
+
+function saveMeme() {
+      const data = gElCanvas.toDataURL()
+      gSaveMemes.push({ dataUrl: data })
+      _saveCarsToStorage()
+}
+
+
+function _saveCarsToStorage() {
+      saveToStorage(KEY, gSaveMemes)
+}
+
+function _loadFromStorage() {
+      return loadFromStorage(KEY)
+}
+
+function updateGMemes() {
+      var saveMemes = loadFromStorage(KEY)
+      if (!saveMemes || !saveMemes.length) {
+            saveMemes = []
+      }
+      gSaveMemes = saveMemes;
 }
