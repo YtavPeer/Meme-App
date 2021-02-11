@@ -13,7 +13,7 @@ function renderSearchWord() {
       var searchWord = getSearchWord();
       var strWordsHtml = '';
       for (var key in searchWord) {
-            strWordsHtml += `<li><a href="" style="font-size:${searchWord[key]}px;" class="search-item">${key}</a></li>`;
+            strWordsHtml += `<li><a onclick="searchByKeyword(event,'${key}')" href="" style="font-size:${searchWord[key]}px;" class="search-item">${key}</a></li>`;
       }
       var elSearchWords = document.querySelector('.search-word');
       elSearchWords.innerHTML = strWordsHtml;
@@ -232,6 +232,9 @@ function onDown(ev) {
       if (lineIndex >= 0) {
             updateLineDragging(lineIndex, pos);
             document.body.style.cursor = 'grabbing'
+            //update input text
+            var currLine = gMeme.lines[gMeme.selectedLineIdx]
+            document.querySelector('.text-line').value = currLine.txt;
       } else {
             console.log('clear focus');
             removeLineMark()
@@ -241,6 +244,7 @@ function onDown(ev) {
 
 function onMove(ev) {
       var currLine = gMeme.lines[gMeme.selectedLineIdx]
+
       if (currLine.isLineDragging) {
             const pos = getEvPos(ev)
             const dx = pos.x - currLine.startposX
@@ -287,6 +291,14 @@ function isLineClick(clickPos) {
       return lineIdx;
 }
 
+function searchByKeyword(ev, keyword) {
+      ev.preventDefault();
+      renderGallery(keyword);
+      if (gKeywords[keyword] <= 28) {
+            gKeywords[keyword] += 2
+            renderSearchWord()
+      }
+}
 
 // The next 3 functions handle IMAGE UPLOADING to img tag from file system: 
 function onImgInput(ev) {

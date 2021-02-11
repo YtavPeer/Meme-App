@@ -196,7 +196,7 @@ button {
 /*Gallery */
 .gallery {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
       gap: 10px 10px;
 }
 
@@ -217,7 +217,8 @@ button {
 /*memes */
 .main-memes {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(180px, 180px));
+      margin: 0 auto;
+      grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
       gap: 10px 10px;
       margin-block-start: 10px;
 }

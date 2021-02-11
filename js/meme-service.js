@@ -3,26 +3,26 @@
 /* Globals */
 var gElCanvas;
 var gCtx;
-var gKeywords = { 'happy': 19, 'crazy': 40, 'sarcastic': 24, 'sad': 30, 'famous': 19, 'animal': 40 };
+var gKeywords = { 'all': 16, 'happy': 16, 'crazy': 28, 'sarcastic': 14, 'sad': 22, 'famous': 16, 'animal': 28 };
 var gImgs = [
-      { id: 1, imgUrl: './img-square/1.jpg', Keywords: ['funny', 'crazy', 'sarcastic'] },
-      { id: 2, imgUrl: './img-square/2.jpg', Keywords: ['happy', 'funny', 'animal'] },
-      { id: 3, imgUrl: './img-square/3.jpg', Keywords: ['happy', 'funny'] },
-      { id: 4, imgUrl: './img-square/4.jpg', Keywords: ['happy', 'funny', 'animal'] },
-      { id: 5, imgUrl: './img-square/5.jpg', Keywords: ['happy', 'funny', 'sarcastic'] },
-      { id: 6, imgUrl: './img-square/6.jpg', Keywords: ['famous', 'crazy', 'sarcastic'] },
-      { id: 7, imgUrl: './img-square/7.jpg', Keywords: ['happy', 'crazy'] },
-      { id: 8, imgUrl: './img-square/8.jpg', Keywords: ['famous', 'funny'] },
-      { id: 9, imgUrl: './img-square/9.jpg', Keywords: ['sarcastic', 'crazy'] },
-      { id: 10, imgUrl: './img-square/10.jpg', Keywords: ['famous', 'sad'] },
-      { id: 11, imgUrl: './img-square/11.jpg', Keywords: ['happy', 'funny'] },
-      { id: 12, imgUrl: './img-square/12.jpg', Keywords: ['happy', 'funny'] },
-      { id: 13, imgUrl: './img-square/13.jpg', Keywords: ['happy', 'funny'] },
-      { id: 14, imgUrl: './img-square/14.jpg', Keywords: ['funny', 'famous'] },
-      { id: 15, imgUrl: './img-square/15.jpg', Keywords: ['sad', 'funny', 'crazy'] },
-      { id: 16, imgUrl: './img-square/16.jpg', Keywords: ['sarcastic', 'funny'] },
-      { id: 17, imgUrl: './img-square/17.jpg', Keywords: ['happy', 'crazy'] },
-      { id: 18, imgUrl: './img-square/18.jpg', Keywords: ['crazy', 'sarcastic'] },
+      { id: 1, imgUrl: './img-square/1.jpg', Keywords: ['funny', 'crazy', 'sarcastic', 'all'] },
+      { id: 2, imgUrl: './img-square/2.jpg', Keywords: ['happy', 'funny', 'animal', 'all'] },
+      { id: 3, imgUrl: './img-square/3.jpg', Keywords: ['happy', 'funny', 'all'] },
+      { id: 4, imgUrl: './img-square/4.jpg', Keywords: ['happy', 'funny', 'animal', 'all'] },
+      { id: 5, imgUrl: './img-square/5.jpg', Keywords: ['happy', 'funny', 'sarcastic', 'all'] },
+      { id: 6, imgUrl: './img-square/6.jpg', Keywords: ['famous', 'crazy', 'sarcastic', 'all'] },
+      { id: 7, imgUrl: './img-square/7.jpg', Keywords: ['happy', 'crazy', 'all'] },
+      { id: 8, imgUrl: './img-square/8.jpg', Keywords: ['famous', 'funny', 'all'] },
+      { id: 9, imgUrl: './img-square/9.jpg', Keywords: ['sarcastic', 'crazy', 'all'] },
+      { id: 10, imgUrl: './img-square/10.jpg', Keywords: ['famous', 'sad', 'all'] },
+      { id: 11, imgUrl: './img-square/11.jpg', Keywords: ['happy', 'funny', 'all'] },
+      { id: 12, imgUrl: './img-square/12.jpg', Keywords: ['happy', 'funny', 'all'] },
+      { id: 13, imgUrl: './img-square/13.jpg', Keywords: ['happy', 'funny', 'all'] },
+      { id: 14, imgUrl: './img-square/14.jpg', Keywords: ['funny', 'famous', 'all'] },
+      { id: 15, imgUrl: './img-square/15.jpg', Keywords: ['sad', 'funny', 'crazy', 'all'] },
+      { id: 16, imgUrl: './img-square/16.jpg', Keywords: ['sarcastic', 'funny', 'all'] },
+      { id: 17, imgUrl: './img-square/17.jpg', Keywords: ['happy', 'crazy', 'all'] },
+      { id: 18, imgUrl: './img-square/18.jpg', Keywords: ['crazy', 'sarcastic', 'all'] },
 ];
 var gMeme = {
       selectedImgId: 2,
@@ -35,9 +35,6 @@ var gMeme = {
 const gTouchEvs = ['touchstart', 'touchmove', 'touchend']
 const KEY = 'MEMES';
 var gSaveMemes;
-
-
-
 
 function getImgs() {
       return gImgs
@@ -164,7 +161,6 @@ function saveMeme() {
       gSaveMemes.push({ dataUrl: data })
       _saveCarsToStorage()
 }
-
 
 function _saveCarsToStorage() {
       saveToStorage(KEY, gSaveMemes)
