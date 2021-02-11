@@ -3,26 +3,26 @@
 /* Globals */
 var gElCanvas;
 var gCtx;
-var gKeywords = { 'happy': 19, 'crazy': 40, 'sarcastic': 24, 'famous': 30, 'sad': 19, 'animal': 40 };
+var gKeywords = { 'happy': 19, 'crazy': 40, 'sarcastic': 24, 'sad': 30, 'famous': 19, 'animal': 40 };
 var gImgs = [
-      { id: 1, imgUrl: './img-square/1.jpg', Keywords: ['happy', 'funny'] },
-      { id: 2, imgUrl: './img-square/2.jpg', Keywords: ['happy', 'funny'] },
+      { id: 1, imgUrl: './img-square/1.jpg', Keywords: ['funny', 'crazy', 'sarcastic'] },
+      { id: 2, imgUrl: './img-square/2.jpg', Keywords: ['happy', 'funny', 'animal'] },
       { id: 3, imgUrl: './img-square/3.jpg', Keywords: ['happy', 'funny'] },
-      { id: 4, imgUrl: './img-square/4.jpg', Keywords: ['happy', 'funny'] },
-      { id: 5, imgUrl: './img-square/5.jpg', Keywords: ['happy', 'funny'] },
-      { id: 6, imgUrl: './img-square/6.jpg', Keywords: ['happy', 'funny'] },
-      { id: 7, imgUrl: './img-square/7.jpg', Keywords: ['happy', 'funny'] },
-      { id: 8, imgUrl: './img-square/8.jpg', Keywords: ['happy', 'funny'] },
-      { id: 9, imgUrl: './img-square/9.jpg', Keywords: ['happy', 'funny'] },
-      { id: 10, imgUrl: './img-square/10.jpg', Keywords: ['happy', 'funny'] },
+      { id: 4, imgUrl: './img-square/4.jpg', Keywords: ['happy', 'funny', 'animal'] },
+      { id: 5, imgUrl: './img-square/5.jpg', Keywords: ['happy', 'funny', 'sarcastic'] },
+      { id: 6, imgUrl: './img-square/6.jpg', Keywords: ['famous', 'crazy', 'sarcastic'] },
+      { id: 7, imgUrl: './img-square/7.jpg', Keywords: ['happy', 'crazy'] },
+      { id: 8, imgUrl: './img-square/8.jpg', Keywords: ['famous', 'funny'] },
+      { id: 9, imgUrl: './img-square/9.jpg', Keywords: ['sarcastic', 'crazy'] },
+      { id: 10, imgUrl: './img-square/10.jpg', Keywords: ['famous', 'sad'] },
       { id: 11, imgUrl: './img-square/11.jpg', Keywords: ['happy', 'funny'] },
       { id: 12, imgUrl: './img-square/12.jpg', Keywords: ['happy', 'funny'] },
       { id: 13, imgUrl: './img-square/13.jpg', Keywords: ['happy', 'funny'] },
-      { id: 14, imgUrl: './img-square/14.jpg', Keywords: ['happy', 'funny'] },
-      { id: 15, imgUrl: './img-square/15.jpg', Keywords: ['happy', 'funny'] },
-      { id: 16, imgUrl: './img-square/16.jpg', Keywords: ['happy', 'funny'] },
-      { id: 17, imgUrl: './img-square/17.jpg', Keywords: ['happy', 'funny'] },
-      { id: 18, imgUrl: './img-square/18.jpg', Keywords: ['happy', 'funny'] },
+      { id: 14, imgUrl: './img-square/14.jpg', Keywords: ['funny', 'famous'] },
+      { id: 15, imgUrl: './img-square/15.jpg', Keywords: ['sad', 'funny', 'crazy'] },
+      { id: 16, imgUrl: './img-square/16.jpg', Keywords: ['sarcastic', 'funny'] },
+      { id: 17, imgUrl: './img-square/17.jpg', Keywords: ['happy', 'crazy'] },
+      { id: 18, imgUrl: './img-square/18.jpg', Keywords: ['crazy', 'sarcastic'] },
 ];
 var gMeme = {
       selectedImgId: 2,

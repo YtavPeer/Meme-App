@@ -19,8 +19,15 @@ function renderSearchWord() {
       elSearchWords.innerHTML = strWordsHtml;
 }
 
-function renderGallery() {
+function renderGallery(searchKeyword) {
       var imgs = getImgs();
+      if (searchKeyword) {
+            var filterImgs = imgs.filter(({ Keywords }) => {
+                  return Keywords.includes(searchKeyword);
+            })
+            imgs = filterImgs;
+      }
+
       var strImgsHtml = imgs.map(img => {
             return `<img  class='img-item' src="./img-square/${img.id}.jpg" onclick='onImageClick(${img.id})' alt="">`
       });
@@ -190,6 +197,11 @@ function downloadCanvas(elLink) {
       const data = gElCanvas.toDataURL()
       elLink.href = data
       elLink.download = 'my-canvas';
+}
+
+function onSearchImage() {
+      var searchKeyword = document.querySelector('.serach-bar').value
+      renderGallery(searchKeyword);
 }
 
 //handle drag and frop func

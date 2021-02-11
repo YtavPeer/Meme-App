@@ -27,7 +27,16 @@
       </header>
 
       <section class="main-search main-container flex align-item-center spcae-between">
-            <input type="text" class="serach-bar" placeholder="Enter search keyword 🔍">
+            <input oninput="onSearchImage()" class="serach-bar" list="browsers" name="browser" id="browser"
+                  placeholder="Enter search word🔍">
+            <datalist class="serach-bar" id="browsers">
+                  <option value="happy">
+                  <option value="crazy">
+                  <option value="sarcastic">
+                  <option value="sad">
+                  <option value="famous">
+                  <option value="animal">
+            </datalist>
             <ul class="search-word clean-ul flex">
             </ul>
       </section>
