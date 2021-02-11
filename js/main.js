@@ -40,7 +40,7 @@ function renderMeme() {
       img.onload = () => {
             gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
             currMeme.lines.forEach(line => {
-                  drawText(line.posX, line.posY, line.txt, line.size, line.align, line.color, line.stroke)
+                  drawText(line.posX, line.posY, line.txt, line.size, line.align, line.color, line.stroke, line.font)
             });
             if (currMeme.isLinesMark) {
                   drawRect(currMeme.lines[gMeme.selectedLineIdx].posX, currMeme.lines[gMeme.selectedLineIdx].posY)
@@ -49,11 +49,11 @@ function renderMeme() {
 
 }
 
-function drawText(x, y, text, fontSize, align, color, stroke) {
+function drawText(x, y, text, fontSize, align, color, stroke, font) {
       gCtx.lineWidth = 2
       gCtx.strokeStyle = stroke
       gCtx.fillStyle = color
-      gCtx.font = `${fontSize}px impact`
+      gCtx.font = `${fontSize}px ${font}`
       gCtx.textAlign = align;
       gCtx.fillText(text, x, y)
       gCtx.strokeText(text, x, y)
@@ -142,6 +142,11 @@ function onChangeStrokeColor(elStrokePicker) {
       renderMeme();
 }
 
+function onChangeFont(elSelected) {
+      changeFont(elSelected.value);
+      renderMeme();
+}
+
 function onSwitchLines() {
       gMeme.isLinesMark = true;
       if (gMeme.selectedLineIdx >= gMeme.lines.length - 1) {
@@ -157,3 +162,30 @@ function onDeleteLine() {
       renderMeme()
 }
 
+function downloadCanvas(elLink) {
+      const data = gElCanvas.toDataURL()
+      elLink.href = data
+      elLink.download = 'my-canvas';
+}
+
+// The next 2 functions handle IMAGE UPLOADING to img tag from file system: 
+function onImgInput(ev) {
+      loadImageFromInput(ev, renderImg)
+}
+
+function loadImageFromInput(ev, onImageReady) {
+      document.querySelector('.share-container').innerHTML = ''
+      var reader = new FileReader()
+
+      reader.onload = function (event) {
+            var img = new Image()
+            img.onload = onImageReady.bind(null, img)
+            img.src = event.target.result
+            gImg = img
+      }
+      reader.readAsDataURL(ev.target.files[0])
+}
+
+function renderImg(img) {
+      gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height);
+}

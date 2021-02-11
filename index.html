@@ -71,10 +71,10 @@
                                     alt="">
                         </div>
                         <div class="box choose-font">
-                              <select class="font-select">
-                                    <option>impact</option>
-                                    <option>ariel</option>
-                                    <option>david</option>
+                              <select onchange="onChangeFont(this)" class="font-select">
+                                    <option value="impact">Impact</option>
+                                    <option value="ariel">Ariel</option>
+                                    <option value="consolas">Consolas</option>
                               </select>
                         </div>
                         <div class="box choose-fill-color">
@@ -90,8 +90,14 @@
                                     tabindex=-1 class="hidden-color-picker" style="display: none" ;>
                         </div>
                         <div class="box add-stuff"></div>
-                        <button class="share-btn">share</button>
-                        <button class="download-btn">download</button>
+                        <!-- <button class="share-btn">share</button> -->
+                        <form class="share-btn" action="" method="POST" enctype="multipart/form-data"
+                              onsubmit="uploadImg(this, event)">
+                              <input name="img" id="imgData" type="hidden" />
+                              <button class="share-btn" type="submit">share</button>
+                        </form>
+                        <a href="#" class="download-btn" onclick="downloadCanvas(this)" download="">Download</a>
+                        <div class="share-container"></div>
             </section>
       </main>
 
@@ -106,6 +112,7 @@
             </div>
       </footer>
 
+      <script src="./js/upload-service.js"></script>
       <script src="./js/meme-service.js"></script>
       <script src="./js/main.js"></script>
 </body>

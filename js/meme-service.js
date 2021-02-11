@@ -62,13 +62,14 @@ function updateGmemeImage(imgId) {
       }
 }
 
-function addTextLine(newText, size = gMeme.currFontSize, align = 'center', FillColor = 'white', stroke = 'black') {
+function addTextLine(newText, size = gMeme.currFontSize, align = 'center', FillColor = 'white', stroke = 'black', font = 'impact') {
       var newLine = {
             txt: newText,
             size: size,
             align: align,
             color: FillColor,
             stroke: stroke,
+            font: font,
             posX: 250,
             posY: findEmptyPosY(gMeme.lines.length),
       }
@@ -91,6 +92,10 @@ function changeFillColor(color) {
 
 function changeStrokeColor(strokeColor) {
       gMeme.lines[gMeme.selectedLineIdx].stroke = strokeColor;
+}
+
+function changeFont(font) {
+      gMeme.lines[gMeme.selectedLineIdx].font = font;
 }
 
 function findEmptyPosY(lineNumber) {
