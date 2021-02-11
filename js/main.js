@@ -5,6 +5,7 @@ function init() {
       renderGallery()
       gElCanvas = document.getElementById('my-canvas');
       gCtx = gElCanvas.getContext('2d');
+      addListeners()
 }
 
 function renderSearchWord() {
@@ -175,6 +176,88 @@ function downloadCanvas(elLink) {
       elLink.download = 'my-canvas';
 }
 
+//handle drag and frop func
+function addListeners() {
+      addMouseListeners()
+      addTouchListeners()
+}
+
+function addMouseListeners() {
+      gElCanvas.addEventListener('mousemove', onMove)
+
+      gElCanvas.addEventListener('mousedown', onDown)
+
+      gElCanvas.addEventListener('mouseup', onUp)
+}
+
+function addTouchListeners() {
+      gElCanvas.addEventListener('touchmove', onMove)
+
+      gElCanvas.addEventListener('touchstart', onDown)
+
+      gElCanvas.addEventListener('touchend', onUp)
+}
+
+function onDown(ev) {
+      const pos = getEvPos(ev)
+      var lineIndex = isLineClick(pos);
+      if (lineIndex >= 0) {
+            updateLineDragging(lineIndex, pos);
+            document.body.style.cursor = 'grabbing'
+      } else {
+            console.log('clear focus');
+            removeLineMark()
+            renderMeme();
+      }
+}
+
+function onMove(ev) {
+      var currLine = gMeme.lines[gMeme.selectedLineIdx]
+      if (currLine.isLineDragging) {
+            const pos = getEvPos(ev)
+            const dx = pos.x - currLine.startposX
+            const dy = pos.y - currLine.startposY
+            gMeme.lines[gMeme.selectedLineIdx].posX += dx;
+            gMeme.lines[gMeme.selectedLineIdx].posY += dy;
+            gMeme.lines[gMeme.selectedLineIdx].startposX = pos.x
+            gMeme.lines[gMeme.selectedLineIdx].startposY = pos.y
+            renderMeme();
+      }
+}
+
+function onUp() {
+      gMeme.lines[gMeme.selectedLineIdx].isLineDragging = false;
+      document.body.style.cursor = 'grab'
+}
+
+function getEvPos(ev) {
+      var pos = {
+            x: ev.offsetX,
+            y: ev.offsetY
+      }
+      if (gTouchEvs.includes(ev.type)) {
+            ev.preventDefault()
+            ev = ev.changedTouches[0]
+            pos = {
+                  x: ev.pageX - ev.target.offsetLeft - ev.target.clientLeft,
+                  y: ev.pageY - ev.target.offsetTop - ev.target.clientTop
+            }
+      }
+      return pos
+}
+
+function isLineClick(clickPos) {
+      var meme = getGmeme();
+      var lineIdx;
+      meme.lines.forEach((line, idx) => {
+            if (clickPos.x >= (line.posX - 240) && clickPos.x <= line.posX + 235
+                  && (clickPos.y > line.posY - 60) && (clickPos.y < line.posY + 10)) {
+                  console.log(idx);
+                  lineIdx = idx;
+            }
+      })
+      return lineIdx;
+}
 
 
 // The next 3 functions handle IMAGE UPLOADING to img tag from file system: 
@@ -198,3 +281,5 @@ function loadImageFromInput(ev, onImageReady) {
 function renderImg(img) {
       gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height);
 }
+
+

@@ -32,6 +32,7 @@ var gMeme = {
       currFontSize: 40,
       lineHeigt: 40,
 }
+const gTouchEvs = ['touchstart', 'touchmove', 'touchend']
 
 function getImgs() {
       return gImgs
@@ -87,6 +88,9 @@ function addTextLine(newText, size = gMeme.currFontSize, align = 'center', FillC
             font: font,
             posX: 250,
             posY: findEmptyPosY(gMeme.lines.length),
+            isLineDragging: false,
+            startposX: undefined,
+            startposY: undefined,
       }
       gMeme.lines.push(newLine);
 }
@@ -129,4 +133,19 @@ function findEmptyPosY(lineNumber) {
 
 function deleteSelectedLine() {
       gMeme.lines.splice(gMeme.selectedLineIdx, 1);
+}
+
+function updateLineDragging(lineIndex, pos) {
+      //Focus the current choose line
+      gMeme.selectedLineIdx = lineIndex;
+      gMeme.isLinesMark = true;
+      //update isDraggin to true and set start pos
+      gMeme.lines[gMeme.selectedLineIdx].isLineDragging = true;
+      gMeme.lines[gMeme.selectedLineIdx].startposX = pos.x;
+      gMeme.lines[gMeme.selectedLineIdx].startposY = pos.y;
+      renderMeme();
+}
+
+function removeLineMark() {
+      gMeme.isLinesMark = false;
 }
