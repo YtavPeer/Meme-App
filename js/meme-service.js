@@ -56,10 +56,25 @@ function updateGmemeImage(imgId) {
             selectedImgId: imgId,
             selectedLineIdx: 0,
             isLineSelected: false,
-            lines: [],
+            lines: [
+                  {
+                        txt: 'newText',
+                        size: gMeme.currFontSize,
+                        align: 'center',
+                        color: 'white',
+                        stroke: 'black',
+                        font: 'impact',
+                        posX: 250,
+                        posY: findEmptyPosY(gMeme.lines.length),
+                  }
+            ],
             currFontSize: 40,
             lineHeigt: 40,
       }
+}
+
+function changeTextLine(newText) {
+      gMeme.lines[gMeme.selectedLineIdx].txt = newText
 }
 
 function addTextLine(newText, size = gMeme.currFontSize, align = 'center', FillColor = 'white', stroke = 'black', font = 'impact') {

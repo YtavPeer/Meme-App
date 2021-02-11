@@ -100,9 +100,16 @@ function openMemes() {
       elMemes.style.display = 'block';
 }
 
+function onChangeTextLine() {
+      var newText = document.querySelector('.text-line').value;
+      changeTextLine(newText)
+      renderMeme()
+}
+
 function onAddTextLine() {
       var newText = document.querySelector('.text-line').value;
       addTextLine(newText);
+      onSwitchLines()
       renderMeme()
 }
 
@@ -168,7 +175,9 @@ function downloadCanvas(elLink) {
       elLink.download = 'my-canvas';
 }
 
-// The next 2 functions handle IMAGE UPLOADING to img tag from file system: 
+
+
+// The next 3 functions handle IMAGE UPLOADING to img tag from file system: 
 function onImgInput(ev) {
       loadImageFromInput(ev, renderImg)
 }
