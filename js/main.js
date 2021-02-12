@@ -3,7 +3,7 @@
 function init() {
       renderSearchWord()
       renderGallery()
-      renderMemes()
+      renderSavedMemes()
       gElCanvas = document.getElementById('my-canvas');
       gCtx = gElCanvas.getContext('2d');
       addListeners()
@@ -35,12 +35,16 @@ function renderGallery(searchKeyword) {
       elGallery.innerHTML = strImgsHtml.join('');
 }
 
-function renderMemes() {
+function renderSavedMemes() {
       updateGMemes()
       var imgsMemes = getGsaveMemes();
       var strImgsHtml = imgsMemes.map((img) => {
             const imgContent = img.dataUrl;
-            return `<img  class='memes-items' src="${imgContent}" onclick='onSaveMemesClick(${img.id})' alt="">`
+            return `
+            <a href="#"  onclick="onSaveMemesClick(this,${img.id})" download="">
+            <img  class='memes-items' src="${imgContent}"  alt="">
+            </a>`
+
       });
       var elMemes = document.querySelector('.main-memes');
       elMemes.innerHTML = strImgsHtml.join('');
@@ -48,13 +52,6 @@ function renderMemes() {
 
 function onImageClick(imgId) {
       updateGmemeImage(imgId);
-      renderMeme()
-      openEditor()
-}
-
-///need to continue implement this open save memes
-function onSaveMemesClick(saveMemesId) {
-      updateGmemeImage(saveMemesId);
       renderMeme()
       openEditor()
 }
@@ -224,6 +221,15 @@ function downloadCanvas(elLink) {
       elLink.download = 'my-canvas';
 }
 
+function onSaveMemesClick(ellink, savedMemesId) {
+      var savedMemes = getGsaveMemes()
+      var currSavedMemes = savedMemes.find((memes) => {
+            return memes.id === savedMemesId;
+      })
+      ellink.href = currSavedMemes.dataUrl
+      ellink.download = 'my-saved-canvas';
+}
+
 function onSearchImage() {
       var searchKeyword = document.querySelector('.serach-bar').value
       renderGallery(searchKeyword);
@@ -359,6 +365,6 @@ function toggleMenu() {
 //handle storage
 function onSaveMeme(elSave) {
       saveMeme(elSave);
-      renderMemes()
+      renderSavedMemes()
 }
 

@@ -73,7 +73,9 @@ function getEmojis() {
       return gEmoji;
 }
 
+
 function updateGmemeImage(imgId) {
+
       gMeme = {
             selectedImgId: imgId,
             selectedLineIdx: 0,
