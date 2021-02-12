@@ -197,3 +197,9 @@ function updateGMemes() {
       }
       gSaveMemes = saveMemes;
 }
+
+function addImageToList() {
+      var newImage = { id: gImgs.length + 1, imgUrl: gImg.src, Keywords: ['crazy', 'sarcastic', 'all'] }
+      gImgs.push(newImage);
+      renderGallery()
+}

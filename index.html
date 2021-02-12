@@ -16,7 +16,15 @@
       <div class="main-screen" onclick="toggleMenu()"></div>
       <header class="main-header">
             <nav class="header-container main-container flex align-item-center spcae-between">
-                  <a id="logo" class="logo" href=""><img class="img-logo" src="./ICONS/LOGO.png" alt=""></a>
+                  <div class="logo-area">
+                        <a id="logo" class="logo" href=""><img class="img-logo" src="./ICONS/LOGO.png" alt=""></a>
+                        <select onchange="changeTheme()" class="theme" name="theme" id="theme">
+                              <option value="regular">regular</option>
+                              <option value="kids">kids</option>
+                              <option value="adolt">adolt</option>
+                              <option value="animal">animal</option>
+                        </select>
+                  </div>
                   <ul class="navbar-conntainer clean-ul flex">
                         <li class="li-nav"><a class="nav-item" onclick="openGallery()">Gallery</a></li>
                         <li><a class="nav-item" onclick="openMemes()">Memes</a></li>
@@ -27,16 +35,19 @@
       </header>
 
       <section class="main-search main-container flex align-item-center spcae-between">
-            <input oninput="onSearchImage()" class="serach-bar" list="browsers" name="browser" id="browser"
-                  placeholder="Enter search word🔍">
-            <datalist class="serach-bar" id="browsers">
-                  <option value="happy">
-                  <option value="crazy">
-                  <option value="sarcastic">
-                  <option value="sad">
-                  <option value="famous">
-                  <option value="animal">
-            </datalist>
+            <div class="search-area">
+                  <input oninput="onSearchImage()" class="serach-bar" list="browsers" name="browser" id="browser"
+                        placeholder="Enter search word🔍">
+                  <datalist class="serach-bar" id="browsers">
+                        <option value="happy">
+                        <option value="crazy">
+                        <option value="sarcastic">
+                        <option value="sad">
+                        <option value="famous">
+                        <option value="animal">
+                  </datalist>
+                  <input type="file" class="file-input btn" name="image" onchange="onImgInput(event)" />
+            </div>
             <ul class="search-word clean-ul flex">
             </ul>
       </section>

@@ -1,5 +1,7 @@
 'use strict'
 
+var gImg;
+
 // on submit call to this function
 function uploadImg(elForm, ev) {
       ev.preventDefault();
@@ -30,4 +32,6 @@ function doUploadImg(elForm, onSuccess) {
                   console.error(err)
             })
 }
+
+
 

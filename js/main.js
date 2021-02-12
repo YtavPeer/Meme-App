@@ -29,7 +29,7 @@ function renderGallery(searchKeyword) {
       }
 
       var strImgsHtml = imgs.map(img => {
-            return `<img  class='img-item' src="./img-square/${img.id}.jpg" onclick='onImageClick(${img.id})' alt="">`
+            return `<img  class='img-item' src="${img.imgUrl}" onclick='onImageClick(${img.id})' alt="">`
       });
       var elGallery = document.querySelector('.gallery');
       elGallery.innerHTML = strImgsHtml.join('');
@@ -235,6 +235,31 @@ function onSearchImage() {
       renderGallery(searchKeyword);
 }
 
+function changeTheme() {
+      var themeChoose = document.querySelector('.theme').value
+      console.log(themeChoose);
+      document.body.classList.remove('kids')
+      document.body.classList.remove('regular')
+      switch (themeChoose) {
+            case 'kids':
+                  document.body.classList.add('kids')
+                  break;
+            case 'regular':
+                  document.body.classList.add('regular')
+                  break;
+            case 'kids':
+                  document.body.classList.add('kids')
+
+                  break;
+
+            default:
+                  break;
+
+            // celeb-meme, politic-meme, ani-meme, kid-meme,
+      }
+
+}
+
 //handle drag and frop func
 function addListeners() {
       addMouseListeners()
@@ -345,6 +370,7 @@ function loadImageFromInput(ev, onImageReady) {
             img.onload = onImageReady.bind(null, img)
             img.src = event.target.result
             gImg = img
+            addImageToList()
       }
       reader.readAsDataURL(ev.target.files[0])
 }

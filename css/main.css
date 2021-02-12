@@ -176,8 +176,18 @@ button {
       border-color: black
 }
 
+.search-area {
+      width: 230px;
+}
+
 .serach-bar:focus {
       border-color: green
+}
+
+.file-input {
+      margin-block-start: 10px;
+      background-color: #7a7a7a;
+      width: 206px;
 }
 
 .search-word {
@@ -192,6 +202,12 @@ button {
       font-size: 2.5em;
       text-align: center;
       margin-inline-end: 20px;
+}
+
+.theme {
+      position: absolute;
+      /* align-items: flex-start; */
+      margin-inline-start: 20px;
 }
 
 /*Gallery */
@@ -433,7 +449,7 @@ a.btn {
       grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
       grid-template-rows: 40px;
       gap: 10px 10px;
-      
+
 }
 
 
@@ -478,6 +494,18 @@ a.btn {
       background-color: rgba(0, 0, 0, 40%);
       transition: opacity 0.8s;
       cursor: pointer;
+}
+
+/* theme */
+
+.kids {
+      background-color: blueviolet;
+      /* background-image: url("./img-theme/kids.jpg"); */
+
+}
+
+.regular {
+      background-color: #e3e3e3;
 }
 
 @media only screen and (max-width: 920px) {
