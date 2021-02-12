@@ -428,6 +428,15 @@ a.btn {
       height: 100%;
 }
 
+.box add-stuff {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
+      grid-template-rows: 40px;
+      gap: 10px 10px;
+      
+}
+
+
 
 
 /* footer */

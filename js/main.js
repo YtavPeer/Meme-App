@@ -7,7 +7,6 @@ function init() {
       gElCanvas = document.getElementById('my-canvas');
       gCtx = gElCanvas.getContext('2d');
       addListeners()
-      renderslideShowEmojis()
 }
 
 function renderSearchWord() {
@@ -73,8 +72,10 @@ function renderMeme() {
             if (currMeme.isLinesMark) {
                   drawRect(currMeme.lines[gMeme.selectedLineIdx].posX, currMeme.lines[gMeme.selectedLineIdx].posY)
             }
+            currMeme.emojis.forEach(emoji => {
+                  drawEmoji(emoji);
+            })
       }
-
 }
 
 function drawText(x, y, text, fontSize, align, color, stroke, font) {
@@ -85,6 +86,16 @@ function drawText(x, y, text, fontSize, align, color, stroke, font) {
       gCtx.textAlign = align;
       gCtx.fillText(text, x, y)
       gCtx.strokeText(text, x, y)
+}
+
+function drawEmoji(emoji) {
+
+      const img = new Image()
+      img.src = emoji.emojiUrl;
+
+      img.onload = () => {
+            gCtx.drawImage(img, gElCanvas.width / 12.5, gElCanvas.height / 5, 60, 60)
+      }
 }
 
 function drawRect(x, y) {
@@ -142,6 +153,12 @@ function onAddTextLine() {
       var newText = document.querySelector('.text-line').value;
       addTextLine(newText);
       onSwitchLines()
+      renderMeme()
+}
+
+function onAddEmoji(emojiId) {
+      addEmoji(emojiId)
+      // onSwitchLines()
       renderMeme()
 }
 

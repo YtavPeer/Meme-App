@@ -3,6 +3,16 @@
 /* Globals */
 var gElCanvas;
 var gCtx;
+var gEmoji = [
+      { id: 1, emojiUrl: './img-items/1.jpg' },
+      { id: 2, emojiUrl: './img-items/2.jpg' },
+      { id: 3, emojiUrl: './img-items/3.png' },
+      { id: 4, emojiUrl: './img-items/4.png' },
+      { id: 5, emojiUrl: './img-items/5.png' },
+      { id: 6, emojiUrl: './img-items/6.jpg' },
+      { id: 7, emojiUrl: './img-items/7.jpg' },
+      { id: 8, emojiUrl: './img-items/8.png' }
+]
 var gKeywords = { 'all': 16, 'happy': 16, 'crazy': 28, 'sarcastic': 14, 'sad': 22, 'famous': 16, 'animal': 28 };
 var gImgs = [
       { id: 1, imgUrl: './img-square/1.jpg', Keywords: ['funny', 'crazy', 'sarcastic', 'all'] },
@@ -29,6 +39,7 @@ var gMeme = {
       selectedLineIdx: 0,
       isLinesMark: false,
       lines: [],
+      emojis: [],
       currFontSize: 40,
       lineHeigt: 40,
 }
@@ -58,6 +69,10 @@ function getCurrImg(imgId) {
       })
 }
 
+function getEmojis() {
+      return gEmoji;
+}
+
 function updateGmemeImage(imgId) {
       gMeme = {
             selectedImgId: imgId,
@@ -75,6 +90,7 @@ function updateGmemeImage(imgId) {
                         posY: findEmptyPosY(gMeme.lines.length),
                   }
             ],
+            emojis: [],
             currFontSize: 40,
             lineHeigt: 40,
       }
@@ -100,6 +116,11 @@ function addTextLine(newText, size = gMeme.currFontSize, align = 'center', FillC
             startposY: undefined,
       }
       gMeme.lines.push(newLine);
+}
+
+function addEmoji(emojiId) {
+      var currEmoji = gEmoji.find((emoji) => emoji.id === emojiId)
+      gMeme.emojis.push(currEmoji);
 }
 
 function changeTextSize(value) {
