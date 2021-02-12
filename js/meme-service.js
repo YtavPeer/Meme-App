@@ -80,6 +80,7 @@ function updateGmemeImage(imgId) {
       }
 }
 
+
 function changeTextLine(newText) {
       gMeme.lines[gMeme.selectedLineIdx].txt = newText
 }
@@ -158,11 +159,7 @@ function removeLineMark() {
 
 function saveMeme() {
       const data = gElCanvas.toDataURL()
-      gSaveMemes.push({ dataUrl: data })
-      _saveCarsToStorage()
-}
-
-function _saveCarsToStorage() {
+      gSaveMemes.push({ dataUrl: data, id: gSaveMemes.length + 1 })
       saveToStorage(KEY, gSaveMemes)
 }
 

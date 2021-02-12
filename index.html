@@ -16,11 +16,11 @@
       <div class="main-screen" onclick="toggleMenu()"></div>
       <header class="main-header">
             <nav class="header-container main-container flex align-item-center spcae-between">
-                  <div class="logo"><img class="img-logo" src="./ICONS/LOGO.png" alt=""></div>
+                  <a id="logo" class="logo" href=""><img class="img-logo" src="./ICONS/LOGO.png" alt=""></a>
                   <ul class="navbar-conntainer clean-ul flex">
-                        <li><a class="nav-item" onclick="openGallery()">Gallery</a></li>
+                        <li class="li-nav"><a class="nav-item" onclick="openGallery()">Gallery</a></li>
                         <li><a class="nav-item" onclick="openMemes()">Memes</a></li>
-                        <li><a class="nav-item">About</a></li>
+                        <li><a href="#footer-logo" class="nav-item">About</a></li>
                   </ul>
                   <button class="menu-btn" onclick="toggleMenu()">☰</button>
             </nav>
@@ -101,7 +101,46 @@
                               <input type="color" oninput="onChangeStrokeColor(this)" class="color-stroke-picker"
                                     tabindex=-1 class="hidden-color-picker" style="display: none" ;>
                         </div>
-                        <div class="box add-stuff"></div>
+                        <div class="box add-stuff">
+                              <div class="owl-carousel owl-theme">
+                                    <div class="item">
+                                          <h4>1</h4>
+                                    </div>
+                                    <div class="item">
+                                          <h4>2</h4>
+                                    </div>
+                                    <div class="item">
+                                          <h4>3</h4>
+                                    </div>
+                                    <div class="item">
+                                          <h4>4</h4>
+                                    </div>
+                                    <div class="item">
+                                          <h4>5</h4>
+                                    </div>
+                                    <div class="item">
+                                          <h4>6</h4>
+                                    </div>
+                                    <div class="item">
+                                          <h4>7</h4>
+                                    </div>
+                                    <div class="item">
+                                          <h4>8</h4>
+                                    </div>
+                                    <div class="item">
+                                          <h4>9</h4>
+                                    </div>
+                                    <div class="item">
+                                          <h4>10</h4>
+                                    </div>
+                                    <div class="item">
+                                          <h4>11</h4>
+                                    </div>
+                                    <div class="item">
+                                          <h4>12</h4>
+                                    </div>
+                              </div>
+                        </div>
                         <!-- <button class="share-btn">share</button> -->
                         <form class="share-btn" action="" method="POST" enctype="multipart/form-data"
                               onsubmit="uploadImg(this, event)">
@@ -115,15 +154,16 @@
       </main>
 
       <section class="main-memes main-container" style="display: none">
-            
       </section>
 
       <footer class="main-footer">
             <div class="footer-container flex">
-                  <div class="logo logo-footer"><img class="img-logo" src="./ICONS/LOGO.png" alt=""></div>
+                  <a id="footer-logo" class="logo logo-footer" href=""><img class="img-logo" src="./ICONS/LOGO.png"
+                              alt=""></a>
                   <small class="copy-footer">All Rights Reserved 2019</small>
             </div>
       </footer>
+
       <script src="./js/storage-service.js"></script>
       <script src="./js/upload-service.js"></script>
       <script src="./js/meme-service.js"></script>

@@ -7,6 +7,7 @@ function init() {
       gElCanvas = document.getElementById('my-canvas');
       gCtx = gElCanvas.getContext('2d');
       addListeners()
+      renderslideShowEmojis()
 }
 
 function renderSearchWord() {
@@ -40,7 +41,7 @@ function renderMemes() {
       var imgsMemes = getGsaveMemes();
       var strImgsHtml = imgsMemes.map((img) => {
             const imgContent = img.dataUrl;
-            return `<img  class='memes-items' src="${imgContent}" alt="">`
+            return `<img  class='memes-items' src="${imgContent}" onclick='onSaveMemesClick(${img.id})' alt="">`
       });
       var elMemes = document.querySelector('.main-memes');
       elMemes.innerHTML = strImgsHtml.join('');
@@ -48,6 +49,13 @@ function renderMemes() {
 
 function onImageClick(imgId) {
       updateGmemeImage(imgId);
+      renderMeme()
+      openEditor()
+}
+
+///need to continue implement this open save memes
+function onSaveMemesClick(saveMemesId) {
+      updateGmemeImage(saveMemesId);
       renderMeme()
       openEditor()
 }
@@ -336,3 +344,4 @@ function onSaveMeme(elSave) {
       saveMeme(elSave);
       renderMemes()
 }
+
