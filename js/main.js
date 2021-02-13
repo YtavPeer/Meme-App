@@ -239,6 +239,7 @@ function changeTheme() {
       var themeChoose = document.querySelector('.theme').value
       console.log(themeChoose);
       document.body.classList.remove('kids')
+      document.body.classList.remove('celeb')
       document.body.classList.remove('regular')
       switch (themeChoose) {
             case 'kids':
@@ -247,15 +248,11 @@ function changeTheme() {
             case 'regular':
                   document.body.classList.add('regular')
                   break;
-            case 'kids':
-                  document.body.classList.add('kids')
-
+            case 'celeb':
+                  document.body.classList.add('celeb')
                   break;
-
             default:
                   break;
-
-            // celeb-meme, politic-meme, ani-meme, kid-meme,
       }
 
 }

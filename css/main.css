@@ -500,8 +500,12 @@ a.btn {
 
 .kids {
       background-color: blueviolet;
-      /* background-image: url("./img-theme/kids.jpg"); */
+      background-image: url("../img-theme/kids2.jpg");
+}
 
+.celeb {
+      background-color: blueviolet;
+      background-image: url("../img-theme/celeb.jpg");
 }
 
 .regular {
