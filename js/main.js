@@ -450,5 +450,6 @@ function resizeCanvas() {
       var { selectedImgWidth, selectedImgHeight } = getGmeme()
       var canvasNewHeight = (selectedImgHeight * elContainer.offsetWidth / selectedImgWidth)
       gElCanvas.height = canvasNewHeight;
+      elContainer.style.height = gElCanvas.height + 5 + 'px';
 }
 
