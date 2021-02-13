@@ -75,6 +75,9 @@ function renderMeme() {
             currMeme.emojis.forEach(emoji => {
                   drawEmoji(emoji);
             })
+            if (currMeme.isEmojiMark) {
+                  drawEmojiRect(currMeme.emojis[gMeme.selectedEmojiIdx].posX, currMeme.emojis[gMeme.selectedEmojiIdx].posY)
+            }
       }
 }
 
@@ -101,6 +104,18 @@ function drawEmoji(emoji) {
 function drawRect(x, y) {
       gCtx.beginPath()
       gCtx.rect(x - 240, y - 60, 475, 70)
+      var gradient = gCtx.createLinearGradient(0, 0, 170, 0);
+      gCtx.lineWidth = 4;
+      gradient.addColorStop("0", "magenta");
+      gradient.addColorStop("0.5", "blue");
+      gradient.addColorStop("1.0", "red");
+      gCtx.strokeStyle = gradient;
+      gCtx.stroke()
+}
+
+function drawEmojiRect(x, y) {
+      gCtx.beginPath()
+      gCtx.rect(x, y, 60, 60)
       var gradient = gCtx.createLinearGradient(0, 0, 170, 0);
       gCtx.lineWidth = 4;
       gradient.addColorStop("0", "magenta");
