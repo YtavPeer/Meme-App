@@ -4,14 +4,14 @@
 var gElCanvas;
 var gCtx;
 var gEmoji = [
-      { id: 1, emojiUrl: './img-items/1.jpg' },
-      { id: 2, emojiUrl: './img-items/2.jpg' },
-      { id: 3, emojiUrl: './img-items/3.png' },
-      { id: 4, emojiUrl: './img-items/4.png' },
-      { id: 5, emojiUrl: './img-items/5.png' },
-      { id: 6, emojiUrl: './img-items/6.jpg' },
-      { id: 7, emojiUrl: './img-items/7.jpg' },
-      { id: 8, emojiUrl: './img-items/8.png' }
+      { id: 1, emojiUrl: './img-items/1.jpg', isEmojiDrag: false, posX: 80, posY: 100, startPosX: undefined, startPosY: undefined },
+      { id: 2, emojiUrl: './img-items/2.jpg', isEmojiDrag: false, posX: 80, posY: 100, startPosX: undefined, startPosY: undefined },
+      { id: 3, emojiUrl: './img-items/3.png', isEmojiDrag: false, posX: 80, posY: 100, startPosX: undefined, startPosY: undefined },
+      { id: 4, emojiUrl: './img-items/4.png', isEmojiDrag: false, posX: 80, posY: 100, startPosX: undefined, startPosY: undefined },
+      { id: 5, emojiUrl: './img-items/5.png', isEmojiDrag: false, posX: 80, posY: 100, startPosX: undefined, startPosY: undefined },
+      { id: 6, emojiUrl: './img-items/6.jpg', isEmojiDrag: false, posX: 80, posY: 100, startPosX: undefined, startPosY: undefined },
+      { id: 7, emojiUrl: './img-items/7.jpg', isEmojiDrag: false, posX: 80, posY: 100, startPosX: undefined, startPosY: undefined },
+      { id: 8, emojiUrl: './img-items/8.png', isEmojiDrag: false, posX: 80, posY: 100, startPosX: undefined, startPosY: undefined }
 ]
 var gKeywords = { 'all': 16, 'happy': 16, 'crazy': 28, 'sarcastic': 14, 'sad': 22, 'famous': 16, 'animal': 28 };
 var gImgs = [
@@ -38,6 +38,8 @@ var gMeme = {
       selectedImgId: 2,
       selectedLineIdx: 0,
       isLinesMark: false,
+      selectedEmojiIdx: 0,
+      isEmojiMark: false,
       lines: [],
       emojis: [],
       currFontSize: 40,
@@ -80,6 +82,8 @@ function updateGmemeImage(imgId) {
             selectedImgId: imgId,
             selectedLineIdx: 0,
             isLineSelected: false,
+            selectedEmojiIdx: 0,
+            isEmojiMark: false,
             lines: [
                   {
                         txt: 'newText',
@@ -97,7 +101,6 @@ function updateGmemeImage(imgId) {
             lineHeigt: 40,
       }
 }
-
 
 function changeTextLine(newText) {
       gMeme.lines[gMeme.selectedLineIdx].txt = newText
@@ -176,8 +179,22 @@ function updateLineDragging(lineIndex, pos) {
       renderMeme();
 }
 
+function updateEmojiDragging(emojiIndex, pos) {
+      gMeme.selectedEmojiIdx = emojiIndex;
+      gMeme.isEmojiMark = true;
+      //update isDraggin to true and set start pos
+      gMeme.emojis[gMeme.selectedEmojiIdx].isEmojiDrag = true;
+      gMeme.emojis[gMeme.selectedEmojiIdx].startPosX = pos.x;
+      gMeme.emojis[gMeme.selectedEmojiIdx].startPosY = pos.y;
+      renderMeme();
+}
+
 function removeLineMark() {
       gMeme.isLinesMark = false;
+}
+
+function removeEmojiMark() {
+      gMeme.isEmojiMark = false;
 }
 
 function saveMeme() {

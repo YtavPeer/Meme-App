@@ -94,7 +94,7 @@ function drawEmoji(emoji) {
       img.src = emoji.emojiUrl;
 
       img.onload = () => {
-            gCtx.drawImage(img, gElCanvas.width / 12.5, gElCanvas.height / 5, 60, 60)
+            gCtx.drawImage(img, emoji.posX, emoji.posY, 60, 60)
       }
 }
 
@@ -130,6 +130,7 @@ function openGallery() {
       elSearch.style.display = 'flex';
       var elMemes = document.querySelector('.main-memes');
       elMemes.style.display = 'none';
+      toggleMenu()
 }
 
 function openMemes() {
@@ -141,6 +142,11 @@ function openMemes() {
       elEditor.style.display = 'none';
       var elMemes = document.querySelector('.main-memes');
       elMemes.style.display = 'block';
+      toggleMenu()
+}
+
+function openAbout() {
+      toggleMenu()
 }
 
 function onChangeTextLine() {
@@ -296,8 +302,15 @@ function onDown(ev) {
             var currLine = gMeme.lines[gMeme.selectedLineIdx]
             document.querySelector('.text-line').value = currLine.txt;
       } else {
-            console.log('clear focus');
             removeLineMark()
+            renderMeme();
+      }
+      var emojiIndex = isEmojiClick(pos);
+      if (emojiIndex >= 0) {
+            updateEmojiDragging(emojiIndex, pos);
+            document.body.style.cursor = 'grabbing'
+      } else {
+            removeEmojiMark()
             renderMeme();
       }
 }
@@ -315,11 +328,29 @@ function onMove(ev) {
             gMeme.lines[gMeme.selectedLineIdx].startposY = pos.y
             renderMeme();
       }
+
+      var currEmoji = gMeme.emojis[gMeme.selectedEmojiIdx];
+      if (currEmoji) {
+            if (currEmoji.isEmojiDrag) {
+                  const pos = getEvPos(ev)
+                  const dx = pos.x - currEmoji.startPosX
+                  const dy = pos.y - currEmoji.startPosY
+                  gMeme.emojis[gMeme.selectedEmojiIdx].posX += dx;
+                  gMeme.emojis[gMeme.selectedEmojiIdx].posY += dy;
+                  gMeme.emojis[gMeme.selectedEmojiIdx].startPosX = pos.x
+                  gMeme.emojis[gMeme.selectedEmojiIdx].startPosY = pos.y
+                  renderMeme();
+            }
+      }
 }
 
 function onUp() {
       gMeme.lines[gMeme.selectedLineIdx].isLineDragging = false;
-      document.body.style.cursor = 'grab'
+      var currEmoji = gMeme.emojis[gMeme.selectedEmojiIdx]
+      if (currEmoji) {
+            currEmoji.isEmojiDrag = false;
+            document.body.style.cursor = 'grab'
+      }
 }
 
 function getEvPos(ev) {
@@ -344,11 +375,22 @@ function isLineClick(clickPos) {
       meme.lines.forEach((line, idx) => {
             if (clickPos.x >= (line.posX - 240) && clickPos.x <= line.posX + 235
                   && (clickPos.y > line.posY - 60) && (clickPos.y < line.posY + 10)) {
-                  console.log(idx);
                   lineIdx = idx;
             }
       })
       return lineIdx;
+}
+
+function isEmojiClick(clickPos) {
+      var meme = getGmeme();
+      var emojiIdx;
+      meme.emojis.forEach((emoji, idx) => {
+            if (clickPos.x >= (emoji.posX) && clickPos.x <= emoji.posX + 60
+                  && (clickPos.y > emoji.posY) && (clickPos.y < emoji.posY + 60)) {
+                  emojiIdx = idx;
+            }
+      })
+      return emojiIdx;
 }
 
 function searchByKeyword(ev, keyword) {
