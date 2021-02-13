@@ -7,6 +7,8 @@ function init() {
       gElCanvas = document.getElementById('my-canvas');
       gCtx = gElCanvas.getContext('2d');
       addListeners()
+      resizeCanvas()
+      renderMeme()
 }
 
 function renderSearchWord() {
@@ -52,8 +54,9 @@ function renderSavedMemes() {
 
 function onImageClick(imgId) {
       updateGmemeImage(imgId);
-      renderMeme()
       openEditor()
+      resizeCanvas()
+      renderMeme()
 }
 
 function renderMeme() {
@@ -261,6 +264,10 @@ function changeTheme() {
 function addListeners() {
       addMouseListeners()
       addTouchListeners()
+      window.addEventListener('resize', () => {
+            resizeCanvas()
+            renderMeme()
+      })
 }
 
 function addMouseListeners() {
@@ -391,3 +398,9 @@ function onSaveMeme(elSave) {
       renderSavedMemes()
 }
 
+//handle the resize of canvas
+function resizeCanvas() {
+      const elContainer = document.querySelector('.canvas');
+      gElCanvas.width = elContainer.offsetWidth
+      gElCanvas.height = elContainer.offsetWidth;
+}
