@@ -217,13 +217,13 @@ button {
 /*Gallery */
 .gallery {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
       gap: 10px 10px;
 }
 
 .img-item {
       text-align: center;
-      height: 180px;
+      
       cursor: pointer;
 }
 

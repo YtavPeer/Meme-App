@@ -15,27 +15,35 @@ var gEmoji = [
 ]
 var gKeywords = { 'all': 16, 'happy': 16, 'crazy': 28, 'sarcastic': 14, 'sad': 22, 'famous': 16, 'animal': 28 };
 var gImgs = [
-      { id: 1, imgUrl: './img-square/1.jpg', Keywords: ['funny', 'crazy', 'sarcastic', 'all'] },
-      { id: 2, imgUrl: './img-square/2.jpg', Keywords: ['happy', 'funny', 'animal', 'all'] },
-      { id: 3, imgUrl: './img-square/3.jpg', Keywords: ['happy', 'funny', 'all'] },
-      { id: 4, imgUrl: './img-square/4.jpg', Keywords: ['happy', 'funny', 'animal', 'all'] },
-      { id: 5, imgUrl: './img-square/5.jpg', Keywords: ['happy', 'funny', 'sarcastic', 'all'] },
-      { id: 6, imgUrl: './img-square/6.jpg', Keywords: ['famous', 'crazy', 'sarcastic', 'all'] },
-      { id: 7, imgUrl: './img-square/7.jpg', Keywords: ['happy', 'crazy', 'all'] },
-      { id: 8, imgUrl: './img-square/8.jpg', Keywords: ['famous', 'funny', 'all'] },
-      { id: 9, imgUrl: './img-square/9.jpg', Keywords: ['sarcastic', 'crazy', 'all'] },
-      { id: 10, imgUrl: './img-square/10.jpg', Keywords: ['famous', 'sad', 'all'] },
-      { id: 11, imgUrl: './img-square/11.jpg', Keywords: ['happy', 'funny', 'all'] },
-      { id: 12, imgUrl: './img-square/12.jpg', Keywords: ['happy', 'funny', 'all'] },
-      { id: 13, imgUrl: './img-square/13.jpg', Keywords: ['happy', 'funny', 'all'] },
-      { id: 14, imgUrl: './img-square/14.jpg', Keywords: ['funny', 'famous', 'all'] },
-      { id: 15, imgUrl: './img-square/15.jpg', Keywords: ['sad', 'funny', 'crazy', 'all'] },
-      { id: 16, imgUrl: './img-square/16.jpg', Keywords: ['sarcastic', 'funny', 'all'] },
-      { id: 17, imgUrl: './img-square/17.jpg', Keywords: ['happy', 'crazy', 'all'] },
-      { id: 18, imgUrl: './img-square/18.jpg', Keywords: ['crazy', 'sarcastic', 'all'] },
+      { id: 1, imgUrl: './img-varius/1.jpg', Keywords: ['funny', 'crazy', 'sarcastic', 'all'] },
+      { id: 2, imgUrl: './img-varius/2.jpg', Keywords: ['happy', 'funny', 'animal', 'all'] },
+      { id: 3, imgUrl: './img-varius/3.jpg', Keywords: ['happy', 'funny', 'all'] },
+      { id: 4, imgUrl: './img-varius/4.jpg', Keywords: ['happy', 'funny', 'animal', 'all'] },
+      { id: 5, imgUrl: './img-varius/5.jpg', Keywords: ['happy', 'funny', 'sarcastic', 'all'] },
+      { id: 6, imgUrl: './img-varius/6.jpg', Keywords: ['famous', 'crazy', 'sarcastic', 'all'] },
+      { id: 7, imgUrl: './img-varius/7.jpg', Keywords: ['happy', 'crazy', 'all'] },
+      { id: 8, imgUrl: './img-varius/8.jpg', Keywords: ['famous', 'funny', 'all'] },
+      { id: 9, imgUrl: './img-varius/9.jpg', Keywords: ['sarcastic', 'crazy', 'all'] },
+      { id: 10, imgUrl: './img-varius/10.jpg', Keywords: ['famous', 'sad', 'all'] },
+      { id: 11, imgUrl: './img-varius/11.jpg', Keywords: ['happy', 'funny', 'all'] },
+      { id: 12, imgUrl: './img-varius/12.jpg', Keywords: ['happy', 'funny', 'all'] },
+      { id: 13, imgUrl: './img-varius/13.jpg', Keywords: ['happy', 'funny', 'all'] },
+      { id: 14, imgUrl: './img-varius/14.jpg', Keywords: ['funny', 'famous', 'all'] },
+      { id: 15, imgUrl: './img-varius/15.jpg', Keywords: ['sad', 'funny', 'crazy', 'all'] },
+      { id: 16, imgUrl: './img-varius/16.jpg', Keywords: ['sarcastic', 'funny', 'all'] },
+      { id: 17, imgUrl: './img-varius/17.jpg', Keywords: ['happy', 'crazy', 'all'] },
+      { id: 18, imgUrl: './img-varius/18.jpg', Keywords: ['crazy', 'sarcastic', 'all'] },
+      { id: 19, imgUrl: './img-varius/19.jpg', Keywords: ['crazy', 'sarcastic', 'all'] },
+      { id: 20, imgUrl: './img-varius/20.jpg', Keywords: ['crazy', 'sarcastic', 'all'] },
+      { id: 21, imgUrl: './img-varius/21.jpg', Keywords: ['crazy', 'sarcastic', 'all'] },
+      { id: 22, imgUrl: './img-varius/22.jpg', Keywords: ['crazy', 'sarcastic', 'all'] },
+      { id: 23, imgUrl: './img-varius/23.jpg', Keywords: ['crazy', 'sarcastic', 'all'] },
+      { id: 24, imgUrl: './img-varius/24.jpg', Keywords: ['crazy', 'sarcastic', 'all'] }
 ];
 var gMeme = {
       selectedImgId: 2,
+      selectedImgWidth: undefined,
+      selectedImgHeight: undefined,
       selectedLineIdx: 0,
       isLinesMark: false,
       selectedEmojiIdx: 0,
@@ -75,11 +83,12 @@ function getEmojis() {
       return gEmoji;
 }
 
-
 function updateGmemeImage(imgId) {
 
       gMeme = {
             selectedImgId: imgId,
+            selectedImgWidth: getImageWidth(imgId),
+            selectedImgHeight: getImgeHeight(imgId),
             selectedLineIdx: 0,
             isLineSelected: false,
             selectedEmojiIdx: 0,
@@ -220,3 +229,22 @@ function addImageToList() {
       gImgs.push(newImage);
       renderGallery()
 }
+
+function getImageWidth(imgId) {
+      var imgSelected = gImgs.find((img) => {
+            return img.id === imgId
+      });
+      var currImg = new Image()
+      currImg.src = imgSelected.imgUrl;
+      return currImg.width;
+}
+
+function getImgeHeight(imgId) {
+      var imgSelected = gImgs.find((img) => {
+            return img.id === imgId
+      });
+      var currImg = new Image()
+      currImg.src = imgSelected.imgUrl;
+      return currImg.height;
+}
+

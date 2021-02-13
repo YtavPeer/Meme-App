@@ -443,6 +443,12 @@ function onSaveMeme(elSave) {
 //handle the resize of canvas
 function resizeCanvas() {
       const elContainer = document.querySelector('.canvas');
+      //viewport more then 550px =>  cw = 500px , ch = 500px 
+      //the width of canvas will be conatant
       gElCanvas.width = elContainer.offsetWidth
-      gElCanvas.height = elContainer.offsetWidth;
+      //here need to change the canvas heigth according to the selected image
+      var { selectedImgWidth, selectedImgHeight } = getGmeme()
+      var canvasNewHeight = (selectedImgHeight * elContainer.offsetWidth / selectedImgWidth)
+      gElCanvas.height = canvasNewHeight;
 }
+
