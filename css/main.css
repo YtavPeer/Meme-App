@@ -222,8 +222,9 @@ button {
 }
 
 .img-item {
-      text-align: center;
+      object-fit: cover;
       height: 170px;
+      text-align: center;
       cursor: pointer;
 }
 
@@ -391,23 +392,23 @@ button {
 }
 
 .share-btn {
-      grid-column: 2 /4;
+      grid-column: 2 /3;
       grid-row: 7 / 8;
       color: #ffffff;
       font-family: montserrat-medium;
-      font-size: 1.25em;
-      width: 120px;
+      font-size: 1em;
       height: 60px;
       border-radius: 12px;
       background-color: #ff7f00;
 }
 
 .download-btn {
-      grid-column: 4 /5;
+      grid-column: 3 /5;
       grid-row: 7 / 8;
       color: #ffffff;
       font-family: montserrat-medium;
-      font-size: 1.25em;
+      font-size: 1em;
+      padding: 5px;
       width: 120px;
       height: 60px;
       border-radius: 12px;
@@ -525,10 +526,16 @@ a.btn {
       .main-editor {
             flex-direction: column;
             align-items: center;
+            justify-content: center;
       }
+
+      .control-bar {
+            margin-inline-start: 0;
+      }
+
 }
 
-@media only screen and (max-width: 860px) {}
+
 
 
 

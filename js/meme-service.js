@@ -112,7 +112,8 @@ function updateGmemeImage(imgId) {
 }
 
 function changeTextLine(newText) {
-      gMeme.lines[gMeme.selectedLineIdx].txt = newText
+      gMeme.lines[gMeme.selectedLineIdx].txt = newText;
+      gMeme.isLinesMark = true;
 }
 
 function addTextLine(newText, size = gMeme.currFontSize, align = 'center', FillColor = 'white', stroke = 'black', font = 'impact') {
@@ -135,28 +136,40 @@ function addTextLine(newText, size = gMeme.currFontSize, align = 'center', FillC
 function addEmoji(emojiId) {
       var currEmoji = gEmoji.find((emoji) => emoji.id === emojiId)
       gMeme.emojis.push(currEmoji);
+      gMeme.isEmojiMark = true;
+      gMeme.isLinesMark = false;
 }
 
 function changeTextSize(value) {
-      if ((gMeme.currFontSize < 20 && value < 0) || (gMeme.currFontSize >= 60 && value > 0)) return;
-      gMeme.currFontSize += value;
-      gMeme.lines[gMeme.selectedLineIdx].size += value;
+      if (gMeme.isLinesMark) {
+            if ((gMeme.currFontSize < 20 && value < 0) || (gMeme.currFontSize >= 60 && value > 0)) return;
+            gMeme.currFontSize += value;
+            gMeme.lines[gMeme.selectedLineIdx].size += value;
+      }
 }
 
 function changeAlignment(value) {
-      gMeme.lines[gMeme.selectedLineIdx].align = value;
+      if (gMeme.isLinesMark) {
+            gMeme.lines[gMeme.selectedLineIdx].align = value;
+      }
 }
 
 function changeFillColor(color) {
-      gMeme.lines[gMeme.selectedLineIdx].color = color;
+      if (gMeme.isLinesMark) {
+            gMeme.lines[gMeme.selectedLineIdx].color = color;
+      }
 }
 
 function changeStrokeColor(strokeColor) {
-      gMeme.lines[gMeme.selectedLineIdx].stroke = strokeColor;
+      if (gMeme.isLinesMark) {
+            gMeme.lines[gMeme.selectedLineIdx].stroke = strokeColor;
+      }
 }
 
 function changeFont(font) {
-      gMeme.lines[gMeme.selectedLineIdx].font = font;
+      if (gMeme.isLinesMark) {
+            gMeme.lines[gMeme.selectedLineIdx].font = font;
+      }
 }
 
 function findEmptyPosY(lineNumber) {
@@ -174,7 +187,15 @@ function findEmptyPosY(lineNumber) {
 }
 
 function deleteSelectedLine() {
-      gMeme.lines.splice(gMeme.selectedLineIdx, 1);
+      if (gMeme.isLinesMark) {
+            gMeme.lines.splice(gMeme.selectedLineIdx, 1);
+            gMeme.isLinesMark = false;
+      }
+
+      if (gMeme.isEmojiMark) {
+            gMeme.emojis.splice(gMeme.selectedEmojiIdx, 1);
+            gMeme.isEmojiMark = false;
+      }
 }
 
 function updateLineDragging(lineIndex, pos) {
