@@ -4,14 +4,14 @@
 var gElCanvas;
 var gCtx;
 var gEmoji = [
-      { id: 1, emojiUrl: './img-items/1.jpg', isEmojiDrag: false, posX: 80, posY: 100, startPosX: undefined, startPosY: undefined },
-      { id: 2, emojiUrl: './img-items/2.jpg', isEmojiDrag: false, posX: 80, posY: 100, startPosX: undefined, startPosY: undefined },
-      { id: 3, emojiUrl: './img-items/3.png', isEmojiDrag: false, posX: 80, posY: 100, startPosX: undefined, startPosY: undefined },
-      { id: 4, emojiUrl: './img-items/4.png', isEmojiDrag: false, posX: 80, posY: 100, startPosX: undefined, startPosY: undefined },
-      { id: 5, emojiUrl: './img-items/5.png', isEmojiDrag: false, posX: 80, posY: 100, startPosX: undefined, startPosY: undefined },
-      { id: 6, emojiUrl: './img-items/6.jpg', isEmojiDrag: false, posX: 80, posY: 100, startPosX: undefined, startPosY: undefined },
-      { id: 7, emojiUrl: './img-items/7.jpg', isEmojiDrag: false, posX: 80, posY: 100, startPosX: undefined, startPosY: undefined },
-      { id: 8, emojiUrl: './img-items/8.png', isEmojiDrag: false, posX: 80, posY: 100, startPosX: undefined, startPosY: undefined }
+      { id: 1, emojiUrl: './img-items/1.jpg', isEmojiDrag: false, posX: 80, posY: 100, startPosX: undefined, startPosY: undefined, imgWidth: 60 },
+      { id: 2, emojiUrl: './img-items/2.jpg', isEmojiDrag: false, posX: 80, posY: 100, startPosX: undefined, startPosY: undefined, imgWidth: 60 },
+      { id: 3, emojiUrl: './img-items/3.png', isEmojiDrag: false, posX: 80, posY: 100, startPosX: undefined, startPosY: undefined, imgWidth: 60 },
+      { id: 4, emojiUrl: './img-items/4.png', isEmojiDrag: false, posX: 80, posY: 100, startPosX: undefined, startPosY: undefined, imgWidth: 60 },
+      { id: 5, emojiUrl: './img-items/5.png', isEmojiDrag: false, posX: 80, posY: 100, startPosX: undefined, startPosY: undefined, imgWidth: 60 },
+      { id: 6, emojiUrl: './img-items/6.jpg', isEmojiDrag: false, posX: 80, posY: 100, startPosX: undefined, startPosY: undefined, imgWidth: 60 },
+      { id: 7, emojiUrl: './img-items/7.jpg', isEmojiDrag: false, posX: 80, posY: 100, startPosX: undefined, startPosY: undefined, imgWidth: 60 },
+      { id: 8, emojiUrl: './img-items/8.png', isEmojiDrag: false, posX: 80, posY: 100, startPosX: undefined, startPosY: undefined, imgWidth: 60 }
 ]
 var gKeywords = { 'all': 16, 'happy': 16, 'crazy': 28, 'sarcastic': 14, 'sad': 22, 'famous': 16, 'animal': 28 };
 var gImgs = [
@@ -145,6 +145,11 @@ function changeTextSize(value) {
             if ((gMeme.currFontSize < 20 && value < 0) || (gMeme.currFontSize >= 60 && value > 0)) return;
             gMeme.currFontSize += value;
             gMeme.lines[gMeme.selectedLineIdx].size += value;
+      }
+
+      if (gMeme.isEmojiMark) {
+            if ((gMeme.emojis[gMeme.selectedEmojiIdx].imgWidth < 20 && value < 0) || (gMeme.emojis[gMeme.selectedEmojiIdx].imgWidth >= 150 && value > 0)) return;
+            gMeme.emojis[gMeme.selectedEmojiIdx].imgWidth += value * 4;
       }
 }
 

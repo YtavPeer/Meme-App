@@ -76,7 +76,7 @@ function renderMeme() {
                   drawEmoji(emoji);
             })
             if (currMeme.isEmojiMark) {
-                  drawEmojiRect(currMeme.emojis[gMeme.selectedEmojiIdx].posX, currMeme.emojis[gMeme.selectedEmojiIdx].posY)
+                  drawEmojiRect(currMeme.emojis[gMeme.selectedEmojiIdx].posX, currMeme.emojis[gMeme.selectedEmojiIdx].posY, currMeme.emojis[gMeme.selectedEmojiIdx].imgWidth)
             }
       }
 }
@@ -97,7 +97,7 @@ function drawEmoji(emoji) {
       img.src = emoji.emojiUrl;
 
       img.onload = () => {
-            gCtx.drawImage(img, emoji.posX, emoji.posY, 60, 60)
+            gCtx.drawImage(img, emoji.posX, emoji.posY, emoji.imgWidth, emoji.imgWidth)
       }
 }
 
@@ -113,9 +113,9 @@ function drawRect(x, y) {
       gCtx.stroke()
 }
 
-function drawEmojiRect(x, y) {
+function drawEmojiRect(x, y, emojiSize) {
       gCtx.beginPath()
-      gCtx.rect(x, y, 60, 60)
+      gCtx.rect(x, y, emojiSize, emojiSize)
       var gradient = gCtx.createLinearGradient(0, 0, 170, 0);
       gCtx.lineWidth = 4;
       gradient.addColorStop("0", "magenta");
@@ -400,8 +400,8 @@ function isEmojiClick(clickPos) {
       var meme = getGmeme();
       var emojiIdx;
       meme.emojis.forEach((emoji, idx) => {
-            if (clickPos.x >= (emoji.posX) && clickPos.x <= emoji.posX + 60
-                  && (clickPos.y > emoji.posY) && (clickPos.y < emoji.posY + 60)) {
+            if (clickPos.x >= (emoji.posX) && clickPos.x <= emoji.posX + emoji.imgWidth
+                  && (clickPos.y > emoji.posY) && (clickPos.y < emoji.posY + emoji.imgWidth)) {
                   emojiIdx = idx;
             }
       })
