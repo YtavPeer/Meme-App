@@ -289,6 +289,7 @@ function addListeners() {
             resizeCanvas()
             renderMeme()
       })
+      addKeyboardListener()
 }
 
 function addMouseListeners() {
@@ -305,6 +306,27 @@ function addTouchListeners() {
       gElCanvas.addEventListener('touchstart', onDown)
 
       gElCanvas.addEventListener('touchend', onUp)
+}
+
+function addKeyboardListener() {
+      document.addEventListener('keyup', (ev) => {
+            changeInputEditor(ev.key);
+      })
+}
+
+function changeInputEditor(keyCode) {
+      var elEditorInput = document.querySelector('.text-line');
+      if (gMeme.isLinesMark) {
+            if (keyCode === 'Backspace') {
+                  var inputValue = elEditorInput.value;
+                  var newInputValue = inputValue.substring(0, inputValue.length - 1);
+                  elEditorInput.value = newInputValue;
+                  onChangeTextLine()
+            } else {
+                  elEditorInput.value += keyCode;
+                  onChangeTextLine()
+            }
+      }
 }
 
 function onDown(ev) {
