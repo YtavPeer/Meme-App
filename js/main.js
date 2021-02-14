@@ -490,3 +490,4 @@ function resizeCanvas() {
       elContainer.style.height = gElCanvas.height + 5 + 'px';
 }
 
+
